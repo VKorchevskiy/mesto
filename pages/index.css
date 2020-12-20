@@ -4,29 +4,26 @@
 @import "../blocks/header/header.css";
 @import "../blocks/logo/logo.css";
 @import "../blocks/content/content.css";
-
 @import "../blocks/profile/profile.css";
 @import "../blocks/profile/__avatar/profile__avatar.css";
 @import "../blocks/profile/__info/profile__info.css";
 @import "../blocks/profile/__name/profile__name.css";
 @import "../blocks/profile/__description/profile__description.css";
-
 @import "../blocks/botton/botton.css";
 @import "../blocks/botton/_edit/botton_edit.css";
 @import "../blocks/botton/_add/botton_add.css";
 @import "../blocks/botton/_like/botton_like.css";
 @import "../blocks/botton/_like/botton_like_active.css";
-
-
 @import "../blocks/elements/elements.css";
 @import "../blocks/element/element.css";
 @import "../blocks/element/__figure/element__figure.css";
 @import "../blocks/element/__image/element__image.css";
 @import "../blocks/element/__caption/element__caption.css";
 @import "../blocks/element/__title/element__title.css";
-
 @import "../blocks/footer/footer.css";
 @import "../blocks/footer/__copyright/footer__copyright.css";
+@import "../blocks/overlay/overlay.css";
+@import "../blocks/popup/popup.css";
 
 /* * {
   outline: 1px solid red;
