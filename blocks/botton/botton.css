@@ -1,0 +1,8 @@
+.botton {
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.botton:hover {
+  opacity: 0.6;
+}

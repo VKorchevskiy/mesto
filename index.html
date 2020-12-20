@@ -1,15 +1,99 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mesto</title>
-    <link rel="stylesheet" href="./pages/index.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mesto</title>
+  <link rel="stylesheet" href="./pages/index.css">
 </head>
+
 <body class="page">
+
   <header class="header">
     <img class="logo" src="./images/logo.svg" alt="Логотип">
   </header>
 
+  <main class="content">
+    <section class="profile">
+      <img src="./images/avatar.jpg" alt="Жак-Ив Кусто." class="profile__avatar">
+      <div class="profile__info">
+        <h1 class="profile__name">Жак-Ив Кусто </h1>
+        <span class="botton botton_edit"></span>
+        <p class="profile__description">Исследователь океана</p>
+      </div>
+      <span class="botton botton_add"></span>
+    </section>
+
+    <ul class="elements">
+      <li class="element">
+        <figure class="element__figure">
+          <img src="./images/karachaevsk.png" alt="Заброшенная церковь в Карачаево-Черкесии" class="element__image">
+          <figcaption class="element__caption">
+            <h2 class="element__title">Карачаево-Черкесия</h2>
+            <span class="botton botton_like"></span>
+          </figcaption>
+        </figure>
+      </li>
+
+       <li class="element">
+        <figure class="element__figure">
+          <img src="./images/mountain-elbrus.png" alt="Гора Эльбрус" class="element__image">
+          <figcaption class="element__caption">
+            <h2 class="element__title">Гора Эльбрус</h2>
+            <span class="botton botton_like"></span>
+          </figcaption>
+        </figure>
+      </li>
+
+      <li class="element">
+        <figure class="element__figure">
+          <img src="./images/dombay.png" alt="Гора Домбай" class="element__image">
+          <figcaption class="element__caption">
+            <h2 class="element__title">Домбай</h2>
+            <span class="botton botton_like"></span>
+          </figcaption>
+        </figure>
+      </li>
+
+      <li class="element">
+        <figure class="element__figure">
+          <img src="./images/mountain-elbrus.png" alt="Гора Эльбрус" class="element__image">
+          <figcaption class="element__caption">
+            <h2 class="element__title">Гора Эльбрус</h2>
+            <span class="botton botton_like"></span>
+          </figcaption>
+        </figure>
+      </li>
+
+      <li class="element">
+        <figure class="element__figure">
+          <img src="./images/dombay.png" alt="Домбай" class="element__image">
+          <figcaption class="element__caption">
+            <h2 class="element__title">Домбай</h2>
+            <span class="botton botton_like"></span>
+          </figcaption>
+        </figure>
+      </li>
+
+      <li class="element">
+        <figure class="element__figure">
+          <img src="./images/karachaevsk.png" alt="Заброшенная церковь в Карачаево-Черкесии" class="element__image">
+          <figcaption class="element__caption">
+            <h2 class="element__title">Карачаево-Черкесия</h2>
+            <span class="botton botton_like"></span>
+          </figcaption>
+        </figure>
+      </li>
+
+    </ul>
+
+  </main>
+
+  <footer class="footer">
+    <p class="footer__copyright">&#169; 2020 Mesto Russia</p>
+  </footer>
+
 </body>
+
 </html>
