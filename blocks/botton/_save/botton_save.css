@@ -1,0 +1,18 @@
+.botton_save {
+  margin-top: 45px;
+  background-color: #000000;
+  min-height: 46px;
+  border-radius: 2px;
+  display: flex;
+}
+
+.botton_save:hover {
+  opacity: 0.8;
+}
+
+@media screen and (min-width: 768px) {
+  .botton_save {
+    min-height: 50px;
+    margin-top: 48px;
+  }
+}

@@ -10,10 +10,13 @@
 @import "../blocks/profile/__name/profile__name.css";
 @import "../blocks/profile/__description/profile__description.css";
 @import "../blocks/botton/botton.css";
+@import "../blocks/botton/__text/botton__text.css";
 @import "../blocks/botton/_edit/botton_edit.css";
 @import "../blocks/botton/_add/botton_add.css";
 @import "../blocks/botton/_like/botton_like.css";
 @import "../blocks/botton/_like/botton_like_active.css";
+@import "../blocks/botton/_save/botton_save.css";
+@import "../blocks/botton/_close/botton_close.css";
 @import "../blocks/elements/elements.css";
 @import "../blocks/element/element.css";
 @import "../blocks/element/__figure/element__figure.css";
@@ -23,8 +26,11 @@
 @import "../blocks/footer/footer.css";
 @import "../blocks/footer/__copyright/footer__copyright.css";
 @import "../blocks/overlay/overlay.css";
+@import "../blocks/overlay/_active/overlay_active.css";
 @import "../blocks/popup/popup.css";
 @import "../blocks/popup/__title/popup__title.css";
+@import "../blocks/input-text/input-text.css";
+
 
 
 /* * {
