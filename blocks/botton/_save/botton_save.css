@@ -3,7 +3,12 @@
   background-color: #000000;
   min-height: 46px;
   border-radius: 2px;
-  display: flex;
+  display: block;
+  width: 100%;
+  color: #FFFFFF;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
 }
 
 .botton_save:hover {
@@ -14,5 +19,7 @@
   .botton_save {
     min-height: 50px;
     margin-top: 48px;
+    font-size: 18px;
+    line-height: 22px;
   }
 }
