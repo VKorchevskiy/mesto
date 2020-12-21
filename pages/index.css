@@ -24,6 +24,8 @@
 @import "../blocks/footer/__copyright/footer__copyright.css";
 @import "../blocks/overlay/overlay.css";
 @import "../blocks/popup/popup.css";
+@import "../blocks/popup/__title/popup__title.css";
+
 
 /* * {
   outline: 1px solid red;
