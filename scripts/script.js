@@ -2,7 +2,7 @@ let editButton = document.querySelector('.button_edit');
 let overlay = document.querySelector('.overlay');
 let closeButton = overlay.querySelector('.button_close');
 
-let togglePopup = function() {
+let togglePopup = function () {
   overlay.classList.toggle('overlay_active');
 }
 
@@ -17,22 +17,21 @@ overlay.addEventListener('click', (event) => {
 
 let formElement = overlay.querySelector('.form');
 
-function handleFormSubmit (evt) {
+function handleFormSubmit(evt) {
   evt.preventDefault();
 
   let nameInput = document.querySelector('.input-text_type_name');
   let jobInput = document.querySelector('.input-text_type_job');
 
- /*  let nameInputValue = nameInput.getAttribute('value');
-  console.log(nameInputValue) */
+  let nameInputValue = nameInput.value;
+  let jobInputValue = jobInput.value;
 
-  // Получите значение полей из свойства value
+  let profileName = document.querySelector('.profile__name');
+  let profileDescription = document.querySelector('.profile__description');
 
-  // Выберите элементы, куда должны быть вставлены значения полей
-
-  // Вставьте новые значения с помощью textContent
+  profileName.textContent = nameInputValue;
+  profileDescription.textContent = jobInputValue;
+  togglePopup();
 }
 
-// Прикрепляем обработчик к форме:
-// он будет следить за событием “submit” - «отправка»
 formElement.addEventListener('submit', handleFormSubmit);

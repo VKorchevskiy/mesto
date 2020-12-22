@@ -6,6 +6,13 @@
   color: #FFFFFF;
   padding: 0;
   margin: 7px 0 0 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 1;
+  grid-column-end: 3;
 }
 
 @media screen and (min-width: 768px) {

@@ -10,7 +10,6 @@
 @import "../blocks/profile/__name/profile__name.css";
 @import "../blocks/profile/__description/profile__description.css";
 @import "../blocks/button/button.css";
-@import "../blocks/button/__text/button__text.css";
 @import "../blocks/button/_edit/button_edit.css";
 @import "../blocks/button/_add/button_add.css";
 @import "../blocks/button/_like/button_like.css";
