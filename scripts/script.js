@@ -1,6 +1,6 @@
-let editButton = document.querySelector('.botton_edit');
+let editButton = document.querySelector('.button_edit');
 let overlay = document.querySelector('.overlay');
-let closeButton = overlay.querySelector('.botton_close');
+let closeButton = overlay.querySelector('.button_close');
 
 let togglePopup = function() {
   overlay.classList.toggle('overlay_active');

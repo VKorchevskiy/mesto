@@ -1,4 +1,4 @@
-.botton_close {
+.button_close {
   position: absolute;
   background-image: url("../../../images/close-icon.svg");
   background-position: center;
@@ -11,7 +11,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .botton_close {
+  .button_close {
     width: 32px;
     height: 32px;
     right: -36px;

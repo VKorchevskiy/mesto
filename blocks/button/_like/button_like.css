@@ -1,4 +1,4 @@
-.botton_like {
+.button_like {
   width: 20.76px;
   height: 18.13px;
   display: inline-block;
@@ -7,6 +7,6 @@
   background-repeat: no-repeat;
 }
 
-.botton_like:hover {
+.button_like:hover {
   opacity: 0.5;
 }

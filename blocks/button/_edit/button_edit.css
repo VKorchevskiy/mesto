@@ -1,4 +1,4 @@
-.botton_edit {
+.button_edit {
   margin: 0 0 0 10px;
   border: 1px solid #FFFFFF;
   width: 18px;
@@ -12,7 +12,7 @@
 }
 
 @media screen and (min-width: 1080px) {
-  .botton_edit {
+  .button_edit {
     margin-left: 19px;
     width: 24px;
     height: 24px;

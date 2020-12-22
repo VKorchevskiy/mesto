@@ -1,4 +1,4 @@
-.botton_add {
+.button_add {
   margin: 33px 0 0 0;
   width: 100%;
   padding-bottom: 46px;
@@ -11,7 +11,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .botton_add {
+  .button_add {
     margin-top: 0;
     width: 150px;
   }
