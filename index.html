@@ -19,74 +19,76 @@
       <img src="./images/avatar.jpg" alt="Жак-Ив Кусто." class="profile__avatar">
       <div class="profile__info">
         <h1 class="profile__name">Жак-Ив Кусто</h1>
-        <span class="button button_edit"></span>
+        <button class="button button_edit"></button>
         <p class="profile__description">Исследователь океана</p>
       </div>
-      <span class="button button_add"></span>
+      <button class="button button_add"></button>
     </section>
 
-    <ul class="elements">
-      <li class="element">
-        <figure class="element__figure">
-          <img src="./images/karachaevsk.png" alt="Заброшенная церковь в Карачаево-Черкесии" class="element__image">
-          <figcaption class="element__caption">
-            <h2 class="element__title">Карачаево-Черкесия</h2>
-            <span class="button button_like"></span>
-          </figcaption>
-        </figure>
-      </li>
+    <section>
+      <ul class="elements">
+        <li class="element">
+          <figure class="element__figure">
+            <img src="./images/karachaevsk.png" alt="Заброшенная церковь в Карачаево-Черкесии" class="element__image">
+            <figcaption class="element__caption">
+              <h2 class="element__title">Карачаево-Черкесия</h2>
+              <button class="button button_like"></button>
+            </figcaption>
+          </figure>
+        </li>
 
-      <li class="element">
-        <figure class="element__figure">
-          <img src="./images/mountain-elbrus.png" alt="Гора Эльбрус" class="element__image">
-          <figcaption class="element__caption">
-            <h2 class="element__title">Гора Эльбрус</h2>
-            <span class="button button_like"></span>
-          </figcaption>
-        </figure>
-      </li>
+        <li class="element">
+          <figure class="element__figure">
+            <img src="./images/mountain-elbrus.png" alt="Гора Эльбрус" class="element__image">
+            <figcaption class="element__caption">
+              <h2 class="element__title">Гора Эльбрус</h2>
+              <button class="button button_like"></button>
+            </figcaption>
+          </figure>
+        </li>
 
-      <li class="element">
-        <figure class="element__figure">
-          <img src="./images/dombay.png" alt="Гора Домбай" class="element__image">
-          <figcaption class="element__caption">
-            <h2 class="element__title">Домбай</h2>
-            <span class="button button_like"></span>
-          </figcaption>
-        </figure>
-      </li>
+        <li class="element">
+          <figure class="element__figure">
+            <img src="./images/dombay.png" alt="Гора Домбай" class="element__image">
+            <figcaption class="element__caption">
+              <h2 class="element__title">Домбай</h2>
+              <button class="button button_like"></button>
+            </figcaption>
+          </figure>
+        </li>
 
-      <li class="element">
-        <figure class="element__figure">
-          <img src="./images/mountain-elbrus.png" alt="Гора Эльбрус" class="element__image">
-          <figcaption class="element__caption">
-            <h2 class="element__title">Гора Эльбрус</h2>
-            <span class="button button_like"></span>
-          </figcaption>
-        </figure>
-      </li>
+        <li class="element">
+          <figure class="element__figure">
+            <img src="./images/mountain-elbrus.png" alt="Гора Эльбрус" class="element__image">
+            <figcaption class="element__caption">
+              <h2 class="element__title">Гора Эльбрус</h2>
+              <button class="button button_like"></button>
+            </figcaption>
+          </figure>
+        </li>
 
-      <li class="element">
-        <figure class="element__figure">
-          <img src="./images/dombay.png" alt="Домбай" class="element__image">
-          <figcaption class="element__caption">
-            <h2 class="element__title">Домбай</h2>
-            <span class="button button_like"></span>
-          </figcaption>
-        </figure>
-      </li>
+        <li class="element">
+          <figure class="element__figure">
+            <img src="./images/dombay.png" alt="Домбай" class="element__image">
+            <figcaption class="element__caption">
+              <h2 class="element__title">Домбай</h2>
+              <button class="button button_like"></button>
+            </figcaption>
+          </figure>
+        </li>
 
-      <li class="element">
-        <figure class="element__figure">
-          <img src="./images/karachaevsk.png" alt="Заброшенная церковь в Карачаево-Черкесии" class="element__image">
-          <figcaption class="element__caption">
-            <h2 class="element__title">Карачаево-Черкесия</h2>
-            <span class="button button_like"></span>
-          </figcaption>
-        </figure>
-      </li>
+        <li class="element">
+          <figure class="element__figure">
+            <img src="./images/karachaevsk.png" alt="Заброшенная церковь в Карачаево-Черкесии" class="element__image">
+            <figcaption class="element__caption">
+              <h2 class="element__title">Карачаево-Черкесия</h2>
+              <button class="button button_like"></button>
+            </figcaption>
+          </figure>
+        </li>
 
-    </ul>
+      </ul>
+    </section>
 
   </main>
 
@@ -97,14 +99,14 @@
   <section class="overlay">
     <div class="popup">
       <h2 class=popup__title>Редактировать профиль</h2>
-      <form class="form">
+      <form class="form" name="profile-info">
         <input class="input-text input-text_type_name" type="text" name="name-profile" id="name-profile"
           placeholder="Имя профиля" value="Жак-Ив Кусто">
         <input class="input-text input-text_type_job" type="text" name="job-profile" id="job-profile"
           placeholder="Род деятельности" value="Исследователь океана">
         <input class="button button_save" type="submit" value="Сохранить">
       </form>
-      <div class="button button_close"></div>
+      <button class="button button_close"></button>
     </div>
   </section>
 

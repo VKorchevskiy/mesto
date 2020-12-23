@@ -1,7 +1,9 @@
 .button_save {
-  margin-top: 45px;
+  margin: 45px 0 0 0;
+  padding: 0;
   background-color: #000000;
-  min-height: 46px;
+  min-height: 50px;
+  border: 0;
   border-radius: 2px;
   display: block;
   width: 100%;

@@ -1,13 +1,14 @@
 .button_add {
   margin: 33px 0 0 0;
   width: 100%;
-  padding-bottom: 46px;
+  padding: 0 0 46px;
   border: 2px solid #FFFFFF;
   border-radius: 2px;
   background-image: url("../../../images/add-button.svg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 16px 16px;
+  background-color: inherit;
 }
 
 @media screen and (min-width: 768px) {
