@@ -1,4 +1,4 @@
-.input-text {
+.form__input-text {
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   font-weight: 400;
@@ -9,11 +9,10 @@
   width: 100%;
 }
 
-.input-text:last-of-type {
+.form__input-text:nth-last-of-type(2) {
   margin-bottom: 0;
 }
 
-.input-text:focus {
+.form__input-text:focus {
   outline: 1px solid #000000;
-
 }

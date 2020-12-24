@@ -10,29 +10,29 @@
 
 <body class="page">
 
-  <header class="header">
+  <header class="header page__header">
     <img class="logo" src="./images/logo.svg" alt="Логотип">
   </header>
 
-  <main class="content">
+  <main class="content page__content">
     <section class="profile">
       <img src="./images/avatar.jpg" alt="Жак-Ив Кусто." class="profile__avatar">
       <div class="profile__info">
         <h1 class="profile__name">Жак-Ив Кусто</h1>
-        <button class="button button_edit"></button>
+        <button class="button profile__edit"></button>
         <p class="profile__description">Исследователь океана</p>
       </div>
-      <button class="button button_add"></button>
+      <button class="button profile__add"></button>
     </section>
 
-    <section>
+    <section class="section">
       <ul class="elements">
         <li class="element">
           <figure class="element__figure">
             <img src="./images/karachaevsk.png" alt="Заброшенная церковь в Карачаево-Черкесии" class="element__image">
             <figcaption class="element__caption">
               <h2 class="element__title">Карачаево-Черкесия</h2>
-              <button class="button button_like"></button>
+              <button class="button element__like"></button>
             </figcaption>
           </figure>
         </li>
@@ -42,7 +42,7 @@
             <img src="./images/mountain-elbrus.png" alt="Гора Эльбрус" class="element__image">
             <figcaption class="element__caption">
               <h2 class="element__title">Гора Эльбрус</h2>
-              <button class="button button_like"></button>
+              <button class="button element__like"></button>
             </figcaption>
           </figure>
         </li>
@@ -52,7 +52,7 @@
             <img src="./images/dombay.png" alt="Гора Домбай" class="element__image">
             <figcaption class="element__caption">
               <h2 class="element__title">Домбай</h2>
-              <button class="button button_like"></button>
+              <button class="button element__like"></button>
             </figcaption>
           </figure>
         </li>
@@ -62,7 +62,7 @@
             <img src="./images/mountain-elbrus.png" alt="Гора Эльбрус" class="element__image">
             <figcaption class="element__caption">
               <h2 class="element__title">Гора Эльбрус</h2>
-              <button class="button button_like"></button>
+              <button class="button element__like"></button>
             </figcaption>
           </figure>
         </li>
@@ -72,7 +72,7 @@
             <img src="./images/dombay.png" alt="Домбай" class="element__image">
             <figcaption class="element__caption">
               <h2 class="element__title">Домбай</h2>
-              <button class="button button_like"></button>
+              <button class="button element__like"></button>
             </figcaption>
           </figure>
         </li>
@@ -82,7 +82,7 @@
             <img src="./images/karachaevsk.png" alt="Заброшенная церковь в Карачаево-Черкесии" class="element__image">
             <figcaption class="element__caption">
               <h2 class="element__title">Карачаево-Черкесия</h2>
-              <button class="button button_like"></button>
+              <button class="button element__like"></button>
             </figcaption>
           </figure>
         </li>
@@ -92,21 +92,21 @@
 
   </main>
 
-  <footer class="footer">
+  <footer class="footer page__footer">
     <p class="footer__copyright">&#169; 2020 Mesto Russia</p>
   </footer>
 
-  <section class="overlay">
+  <section class="overlay overlay_active">
     <div class="popup">
       <h2 class=popup__title>Редактировать профиль</h2>
       <form class="form" name="profile-info">
-        <input class="input-text input-text_type_name" type="text" name="name-profile" id="name-profile"
+        <input class="form__input-text form__input-text_type_name" type="text" name="name-profile" id="name-profile"
           placeholder="Имя профиля" value="Жак-Ив Кусто">
-        <input class="input-text input-text_type_job" type="text" name="job-profile" id="job-profile"
+        <input class="form__input-text form__input-text_type_job" type="text" name="job-profile" id="job-profile"
           placeholder="Род деятельности" value="Исследователь океана">
-        <input class="button button_save" type="submit" value="Сохранить">
+        <input class="button form__save" type="submit" value="Сохранить">
       </form>
-      <button class="button button_close"></button>
+      <button class="button popup__close"></button>
     </div>
   </section>
 

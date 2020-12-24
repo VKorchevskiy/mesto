@@ -1,22 +1,24 @@
 @import "../vendor/normalize.css";
 @import "../vendor/fonts/inter/inter.css";
 @import "../blocks/page/page.css";
+@import "../blocks/page/__header/page__header.css";
+@import "../blocks/page/__content/page__content.css";
+@import "../blocks/page/__footer/page__footer.css";
 @import "../blocks/header/header.css";
 @import "../blocks/logo/logo.css";
+@import "../blocks/button/button.css";
 @import "../blocks/content/content.css";
 @import "../blocks/profile/profile.css";
 @import "../blocks/profile/__avatar/profile__avatar.css";
 @import "../blocks/profile/__info/profile__info.css";
 @import "../blocks/profile/__name/profile__name.css";
 @import "../blocks/profile/__description/profile__description.css";
-@import "../blocks/button/button.css";
-@import "../blocks/button/_edit/button_edit.css";
-@import "../blocks/button/_add/button_add.css";
-@import "../blocks/button/_like/button_like.css";
-@import "../blocks/button/_save/button_save.css";
-@import "../blocks/button/_close/button_close.css";
+@import "../blocks/profile/__add/profile__add.css";
+@import "../blocks/profile/__edit/profile__edit.css";
+@import "../blocks/section/section.css";
 @import "../blocks/elements/elements.css";
 @import "../blocks/element/element.css";
+@import "../blocks/element/__like/element__like.css";
 @import "../blocks/element/__figure/element__figure.css";
 @import "../blocks/element/__image/element__image.css";
 @import "../blocks/element/__caption/element__caption.css";
@@ -26,11 +28,11 @@
 @import "../blocks/overlay/overlay.css";
 @import "../blocks/overlay/_active/overlay_active.css";
 @import "../blocks/popup/popup.css";
+@import "../blocks/popup/__close/popup__close.css";
 @import "../blocks/popup/__title/popup__title.css";
-@import "../blocks/input-text/input-text.css";
-
-
-
+@import "../blocks/form/form.css";
+@import "../blocks/form/__save/form__save.css";
+@import "../blocks/form/__input-text/form__input-text.css";
 /* * {
   outline: 1px solid red;
 }

@@ -1,9 +1,9 @@
-.button_edit {
+.profile__edit {
   margin: 0 0 0 10px;
+  padding: 0 0 0 16px;
   border: 1px solid #FFFFFF;
   width: 18px;
   height: 18px;
-  padding: 0 0 0 16px;
   display: inline-block;
   background-image: url("../../../images/edit-button.svg");
   background-position: center;
@@ -13,12 +13,11 @@
 }
 
 @media screen and (min-width: 1080px) {
-  .button_edit {
+  .profile__edit {
     margin-left: 19px;
+    margin-top: 6px;
     width: 24px;
     height: 24px;
     padding-left: 22px;
-    margin-top: 6px;
-
   }
 }
