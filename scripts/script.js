@@ -8,10 +8,17 @@ let profileName = document.querySelector('.profile__name');
 let profileDescription = document.querySelector('.profile__description');
 
 let openPopup = function () {
+  console.log(nameInput.value);
+  console.log(jobInput.value);
+  nameInput.value = profileName.textContent;
+//  jobInput.value = profileJob.getAttribute('value');
+  console.log(nameInput.value);
+  console.log(jobInput.value);
   overlay.classList.add('overlay_active');
 }
 
 let closePopup = function () {
+
   overlay.classList.remove('overlay_active');
 }
 
@@ -20,7 +27,7 @@ function handleFormSubmit(evt) {
 
   profileName.textContent = nameInput.value;
   profileDescription.textContent = jobInput.value;
-  togglePopup();
+  closePopup();
 }
 
 overlay.addEventListener('click', (event) => {
