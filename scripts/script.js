@@ -1,9 +1,9 @@
-let editButton = document.querySelector('.button_edit');
+let editButton = document.querySelector('.profile__edit');
 let overlay = document.querySelector('.overlay');
-let closeButton = overlay.querySelector('.button_close');
+let closeButton = overlay.querySelector('.popup__close');
 let formElement = overlay.querySelector('.form');
-let nameInput = document.querySelector('.input-text_type_name');
-let jobInput = document.querySelector('.input-text_type_job');
+let nameInput = document.querySelector('.form__input-text_type_name');
+let jobInput = document.querySelector('.form__input-text_type_job');
 let profileName = document.querySelector('.profile__name');
 let profileDescription = document.querySelector('.profile__description');
 
