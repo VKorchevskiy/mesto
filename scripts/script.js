@@ -1,21 +1,56 @@
-let editButton = document.querySelector('.profile__edit');
-let overlay = document.querySelector('.overlay');
-let closeButton = overlay.querySelector('.popup__close');
-let formElement = overlay.querySelector('.form');
-let nameInput = document.querySelector('.form__input-text_type_name');
-let jobInput = document.querySelector('.form__input-text_type_job');
-let profileName = document.querySelector('.profile__name');
-let profileDescription = document.querySelector('.profile__description');
+const editButton = document.querySelector('.profile__edit');
+const overlay = document.querySelector('.overlay');
+const closeButton = overlay.querySelector('.popup__close');
+const formElement = overlay.querySelector('.form');
+const nameInput = document.querySelector('.form__input-text_type_name');
+const jobInput = document.querySelector('.form__input-text_type_job');
+const profileName = document.querySelector('.profile__name');
+const profileDescription = document.querySelector('.profile__description');
+const elementConteiner = document.querySelector('.elements');
+const initialCards = [
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+];
 
-let openPopup = function () {
-/*   console.log(nameInput.value); */
+function addElement (el) {
+  const elementTemplate = document.querySelector('#element').content;
+  const cardElement = elementTemplate.cloneNode(true);
+  cardElement.querySelector('.element__title').textContent = el.name;
+  cardElement.querySelector('.element__image').setAttribute('src', el.link);
+  elementConteiner.appendChild(cardElement);
+}
+
+initialCards.forEach(element => addElement(element));
+
+const openPopup = function () {
   nameInput.value = profileName.textContent;
   jobInput.value = profileDescription.textContent;
-/*   console.log(nameInput.value); */
   overlay.classList.add('overlay_active');
 }
 
-let closePopup = function () {
+const closePopup = function () {
   overlay.classList.remove('overlay_active');
   nameInput.value = '';
   jobInput.value = '';
