@@ -1,11 +1,20 @@
 const editButton = document.querySelector('.profile__edit');
+const addButton = document.querySelector('.profile__add');
 const overlay = document.querySelector('.overlay');
-const closeButton = overlay.querySelector('.popup__close');
-const formElement = overlay.querySelector('.form');
-const nameInput = document.querySelector('.form__input-text_type_name');
-const jobInput = document.querySelector('.form__input-text_type_job');
+
+const popupProfile = overlay.querySelector('.popup_type_profile');
+const closeProfileButton = popupProfile.querySelector('.popup__close');
+const formProfile = popupProfile.querySelector('.form_type_profile');
+const ProfileNameInput = popupProfile.querySelector('.form__input-text_type_name');
+const profileDescriptionInput = popupProfile.querySelector('.form__input-text_type_job');
 const profileName = document.querySelector('.profile__name');
 const profileDescription = document.querySelector('.profile__description');
+
+const popupElement = overlay.querySelector('.popup_type_element');
+const closeElementButton = popupElement.querySelector('.popup__close');
+const formElement = popupElement.querySelector('.form_type_profile');
+const elementNameInput = popupElement.querySelector('.form__input-text_type_element-name');
+const elementLinkInput = popupElement.querySelector('.form__input-text_type_element-link');
 const elementConteiner = document.querySelector('.elements');
 const initialCards = [
   {
@@ -44,22 +53,32 @@ function addElement (el) {
 
 initialCards.forEach(element => addElement(element));
 
-const openPopup = function () {
-  nameInput.value = profileName.textContent;
-  jobInput.value = profileDescription.textContent;
+const openProfilePopup = function () {
+  ProfileNameInput.value = profileName.textContent;
+  profileDescriptionInput.value = profileDescription.textContent;
   overlay.classList.add('overlay_active');
+  popupProfile.classList.add('popup_active');
+}
+
+const openElementPopup = function () {
+  overlay.classList.add('overlay_active');
+  popupElement.classList.add('popup_active');
 }
 
 const closePopup = function () {
   overlay.classList.remove('overlay_active');
-  nameInput.value = '';
-  jobInput.value = '';
+  popupProfile.classList.remove('popup_active');
+  popupElement.classList.remove('popup_active');
+  ProfileNameInput.value = '';
+  profileDescriptionInput.value = '';
+  elementNameInput.value = '';
+  elementLinkInput.value = '';
 }
 
-function handleFormSubmit(evt) {
+function handleProfileFormSubmit(evt) {
   evt.preventDefault();
-  profileName.textContent = nameInput.value;
-  profileDescription.textContent = jobInput.value;
+  profileName.textContent = ProfileNameInput.value;
+  profileDescription.textContent = profileDescriptionInput.value;
   closePopup();
 }
 
@@ -68,6 +87,8 @@ overlay.addEventListener('click', (event) => {
     closePopup();
   }
 });
-closeButton.addEventListener('click', closePopup);
-editButton.addEventListener('click', openPopup);
-formElement.addEventListener('submit', handleFormSubmit);
+closeProfileButton.addEventListener('click', closePopup);
+closeElementButton.addEventListener('click', closePopup);
+editButton.addEventListener('click', openProfilePopup);
+addButton.addEventListener('click', openElementPopup);
+formProfile.addEventListener('submit', handleProfileFormSubmit);

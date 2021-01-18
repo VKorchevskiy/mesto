@@ -36,17 +36,30 @@
   </footer>
 
   <section class="overlay">
-    <div class="popup">
+    <div class="popup popup_type_profile">
       <h2 class=popup__title>Редактировать профиль</h2>
-      <form class="form" name="profile-info">
+      <form class="form form_type_profile" name="profile-info">
         <input class="form__input-text form__input-text_type_name" type="text" name="name-profile" id="name-profile"
           placeholder="Имя профиля" value="Жак-Ив Кусто">
         <input class="form__input-text form__input-text_type_job" type="text" name="job-profile" id="job-profile"
           placeholder="Род деятельности" value="Исследователь океана">
-        <input class="button form__save" type="submit" value="Сохранить">
+        <input class="button form__save form__save_type_profile" type="submit" value="Сохранить">
       </form>
       <button class="button popup__close" type="button"></button>
     </div>
+
+    <div class="popup popup_type_element">
+      <h2 class=popup__title>Новое место</h2>
+      <form class="form form_type_element" name="element-info">
+        <input class="form__input-text form__input-text_type_element-name" type="text" name="element-name" id="element-name"
+          placeholder="Название" value="">
+        <input class="form__input-text form__input-text_type_element-link" type="text" name="element-link" id="element-link"
+          placeholder="Ссылка на картинку" value="">
+        <input class="button form__save form__save_type_element" type="submit" value="Сохранить">
+      </form>
+      <button class="button popup__close" type="button"></button>
+    </div>
+
   </section>
 
   <template id="element">

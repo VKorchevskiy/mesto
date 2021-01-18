@@ -28,11 +28,22 @@
 @import "../blocks/overlay/overlay.css";
 @import "../blocks/overlay/_active/overlay_active.css";
 @import "../blocks/popup/popup.css";
+@import "../blocks/popup/_type/popup_type_profile.css";
+@import "../blocks/popup/_type/popup_type_element.css";
+@import "../blocks/popup/_active/popup_active.css";
 @import "../blocks/popup/__close/popup__close.css";
 @import "../blocks/popup/__title/popup__title.css";
 @import "../blocks/form/form.css";
+@import "../blocks/form/_type/form_type_profile.css";
+@import "../blocks/form/_type/form_type_element.css";
 @import "../blocks/form/__save/form__save.css";
+@import "../blocks/form/__save/_type/form__save_type_profile.css";
+@import "../blocks/form/__save/_type/form__save_type_element.css";
 @import "../blocks/form/__input-text/form__input-text.css";
+@import "../blocks/form/__input-text/_type/form__input-text_type_name.css";
+@import "../blocks/form/__input-text/_type/form__input-text_type_job.css";
+@import "../blocks/form/__input-text/_type/form__input-text_type_element-name.css";
+@import "../blocks/form/__input-text/_type/form__input-text_type_element-link.css";
 /* * {
   outline: 1px solid red;
 }
