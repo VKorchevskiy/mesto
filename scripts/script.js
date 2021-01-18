@@ -12,7 +12,7 @@ const profileDescription = document.querySelector('.profile__description');
 
 const popupElement = overlay.querySelector('.popup_type_element');
 const closeElementButton = popupElement.querySelector('.popup__close');
-const formElement = popupElement.querySelector('.form_type_profile');
+const formElement = popupElement.querySelector('.form_type_element');
 const elementNameInput = popupElement.querySelector('.form__input-text_type_element-name');
 const elementLinkInput = popupElement.querySelector('.form__input-text_type_element-link');
 const elementConteiner = document.querySelector('.elements');
@@ -43,7 +43,7 @@ const initialCards = [
   }
 ];
 
-function addElement (el) {
+function addElement(el) {
   const elementTemplate = document.querySelector('#element').content;
   const cardElement = elementTemplate.cloneNode(true);
   cardElement.querySelector('.element__title').textContent = el.name;
@@ -81,6 +81,15 @@ function handleProfileFormSubmit(evt) {
   profileDescription.textContent = profileDescriptionInput.value;
   closePopup();
 }
+function handleElementFormSubmit(evt) {
+  evt.preventDefault();
+  //console.log(elementNameInput.value + ' / ' + elementLinkInput.value);
+  addElement({
+    name: elementNameInput.value,
+    link: elementLinkInput.value
+  });
+  closePopup();
+}
 
 overlay.addEventListener('click', (event) => {
   if (event.target === event.currentTarget) {
@@ -92,3 +101,4 @@ closeElementButton.addEventListener('click', closePopup);
 editButton.addEventListener('click', openProfilePopup);
 addButton.addEventListener('click', openElementPopup);
 formProfile.addEventListener('submit', handleProfileFormSubmit);
+formElement.addEventListener('submit', handleElementFormSubmit);
