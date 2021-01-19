@@ -2,20 +2,26 @@ const editButton = document.querySelector('.profile__edit');
 const addButton = document.querySelector('.profile__add');
 const overlay = document.querySelector('.overlay');
 
-const popupProfile = overlay.querySelector('.popup_type_profile');
-const closeProfileButton = popupProfile.querySelector('.popup__close');
-const formProfile = popupProfile.querySelector('.form_type_profile');
-const ProfileNameInput = popupProfile.querySelector('.form__input-text_type_name');
-const profileDescriptionInput = popupProfile.querySelector('.form__input-text_type_job');
+const popupTypeProfile = overlay.querySelector('.popup_type_profile');
+const closePopupProfileButton = popupTypeProfile.querySelector('.popup__close');
+const formProfile = popupTypeProfile.querySelector('.form_type_profile');
+const ProfileNameInput = popupTypeProfile.querySelector('.form__input-text_type_name');
+const profileDescriptionInput = popupTypeProfile.querySelector('.form__input-text_type_job');
 const profileName = document.querySelector('.profile__name');
 const profileDescription = document.querySelector('.profile__description');
 
-const popupElement = overlay.querySelector('.popup_type_element');
-const closeElementButton = popupElement.querySelector('.popup__close');
-const formElement = popupElement.querySelector('.form_type_element');
-const elementNameInput = popupElement.querySelector('.form__input-text_type_element-name');
-const elementLinkInput = popupElement.querySelector('.form__input-text_type_element-link');
+const popupTypeElement = overlay.querySelector('.popup_type_element');
+const closePopupElementButton = popupTypeElement.querySelector('.popup__close');
+const formElement = popupTypeElement.querySelector('.form_type_element');
+const elementNameInput = popupTypeElement.querySelector('.form__input-text_type_element-name');
+const elementLinkInput = popupTypeElement.querySelector('.form__input-text_type_element-link');
 const elementConteiner = document.querySelector('.elements');
+
+const popupTypeImage = overlay.querySelector('.popup_type_img');
+const closeImageButton = popupTypeImage.querySelector('.popup__close');
+const popupImage = popupTypeImage.querySelector('.popup__image');
+const popupCaption = popupTypeImage.querySelector('.popup__caption');
+
 const initialCards = [
   {
     name: 'Архыз',
@@ -62,8 +68,8 @@ function openPopup(popup) {
 
 function closePopup(popup) {
   overlay.classList.remove('overlay_active');
-  popupProfile.classList.remove('popup_active');
-  popupElement.classList.remove('popup_active');
+  popupTypeProfile.classList.remove('popup_active');
+  popupTypeElement.classList.remove('popup_active');
   popup.querySelector('.form').reset();
 }
 
@@ -94,9 +100,9 @@ overlay.addEventListener('click', (event) => {
   }
 
 });
-closeProfileButton.addEventListener('click', () => closePopup(popupProfile));
-closeElementButton.addEventListener('click', () => closePopup(popupElement));
-editButton.addEventListener('click', () => openPopup(popupProfile));
-addButton.addEventListener('click', () => openPopup(popupElement));
+closePopupProfileButton.addEventListener('click', () => closePopup(popupTypeProfile));
+closePopupElementButton.addEventListener('click', () => closePopup(popupTypeElement));
+editButton.addEventListener('click', () => openPopup(popupTypeProfile));
+addButton.addEventListener('click', () => openPopup(popupTypeElement));
 formProfile.addEventListener('submit', handleProfileFormSubmit);
 formElement.addEventListener('submit', handleElementFormSubmit);
