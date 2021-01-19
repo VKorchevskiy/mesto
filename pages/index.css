@@ -30,7 +30,11 @@
 @import "../blocks/popup/popup.css";
 @import "../blocks/popup/_type/popup_type_profile.css";
 @import "../blocks/popup/_type/popup_type_element.css";
+@import "../blocks/popup/_type/popup_type_img.css";
 @import "../blocks/popup/_active/popup_active.css";
+@import "../blocks/popup/__caption/popup__caption.css";
+@import "../blocks/popup/__image/popup__image.css";
+@import "../blocks/popup/__figure/popup__figure.css";
 @import "../blocks/popup/__close/popup__close.css";
 @import "../blocks/popup/__title/popup__title.css";
 @import "../blocks/form/form.css";
