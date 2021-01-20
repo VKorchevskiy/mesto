@@ -5,8 +5,10 @@
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
   box-sizing: border-box;
-  position: relative;
-  display: none;
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 1s linear 0s;
 }
 
 @media screen and (min-width: 768px) {

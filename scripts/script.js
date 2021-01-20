@@ -97,7 +97,6 @@ function resetForm(popup) {
     popup.querySelector('.form').reset();
   }
   popup.closest('.overlay').classList.remove('overlay_background-color_dark');
-  console.log(popup.closest('.overlay'))
 }
 
 function getSubmitPopup(evt) {
