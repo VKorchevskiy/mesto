@@ -52,16 +52,19 @@ const initialCards = [
 function addElement(el) {
   const elementTemplate = document.querySelector('#element').content;
   const cardElement = elementTemplate.cloneNode(true);
+  const likeButton = cardElement.querySelector('.element__like');
+  const trashButton = cardElement.querySelector('.element__trash');
   cardElement.querySelector('.element__title').textContent = el.name;
   cardElement.querySelector('.element__image').setAttribute('src', el.link);
-  const elem = cardElement.querySelector('.element__like');
+  likeButton.addEventListener('click', () => {
+    likeButton.classList.toggle('element__like_active');
+  });
+  trashButton.addEventListener('click', () => {
+    console.log(cardElement.querySelector('.element'))
+    trashButton.closest('.element').remove();
 
-  elem.addEventListener('click', () => {
-    elem.classList.toggle('element__like_active');
-    console.log(elem.classList);
   });
   elementConteiner.prepend(cardElement);
-
 }
 
 initialCards.forEach(element => addElement(element));
