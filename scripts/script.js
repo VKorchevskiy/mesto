@@ -18,7 +18,7 @@ const elementLinkInput = popupTypeElement.querySelector('.form__input-text_type_
 const elementConteiner = document.querySelector('.elements');
 
 const popupTypeImage = overlay.querySelector('.popup_type_img');
-const closeImageButton = popupTypeImage.querySelector('.popup__close');
+const closePopupImageButton = popupTypeImage.querySelector('.popup__close');
 const popupImage = popupTypeImage.querySelector('.popup__image');
 const popupCaption = popupTypeImage.querySelector('.popup__caption');
 
@@ -54,7 +54,14 @@ function addElement(el) {
   const cardElement = elementTemplate.cloneNode(true);
   cardElement.querySelector('.element__title').textContent = el.name;
   cardElement.querySelector('.element__image').setAttribute('src', el.link);
+  const elem = cardElement.querySelector('.element__like');
+
+  elem.addEventListener('click', () => {
+    elem.classList.toggle('element__like_active');
+    console.log(elem.classList);
+  });
   elementConteiner.prepend(cardElement);
+
 }
 
 initialCards.forEach(element => addElement(element));
@@ -70,14 +77,28 @@ function closePopup(popup) {
   overlay.classList.remove('overlay_active');
   popupTypeProfile.classList.remove('popup_active');
   popupTypeElement.classList.remove('popup_active');
-  popup.querySelector('.form').reset();
+  resetForm(popup);
+}
+
+function resetForm(popup) {
+  if (popup.querySelector('.form')) {
+    popup.querySelector('.form').reset();
+  }
+}
+
+function getSubmitPopup(evt) {
+  return evt.target.closest('.popup');
+}
+
+function getActivePopup(evt) {
+  return evt.target.querySelector('.popup_active');
 }
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = ProfileNameInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
-  closePopup(evt.target.closest('.popup'));
+  closePopup(getSubmitPopup(evt));
 }
 
 function handleElementFormSubmit(evt) {
@@ -86,22 +107,17 @@ function handleElementFormSubmit(evt) {
     name: elementNameInput.value,
     link: elementLinkInput.value
   });
-  closePopup(evt.target.closest('.popup'));
+  closePopup(getSubmitPopup(evt));
 }
 
-overlay.addEventListener('click', (event) => {
-  if (event.target === event.currentTarget) {
-    const popupActive = event.target.querySelector('.popup_active');
-    const formActive = popupActive.querySelector('.form');
-    if (formActive) {
-      formActive.reset();
-    }
-    closePopup(popupActive);
+overlay.addEventListener('click', (evt) => {
+  if (evt.target === evt.currentTarget) {
+    closePopup(getActivePopup(evt));
   }
-
 });
 closePopupProfileButton.addEventListener('click', () => closePopup(popupTypeProfile));
 closePopupElementButton.addEventListener('click', () => closePopup(popupTypeElement));
+closePopupImageButton.addEventListener('click', () => closePopup(popupTypeImage));
 editButton.addEventListener('click', () => openPopup(popupTypeProfile));
 addButton.addEventListener('click', () => openPopup(popupTypeElement));
 formProfile.addEventListener('submit', handleProfileFormSubmit);

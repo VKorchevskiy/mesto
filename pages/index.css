@@ -19,6 +19,7 @@
 @import "../blocks/elements/elements.css";
 @import "../blocks/element/element.css";
 @import "../blocks/element/__like/element__like.css";
+@import "../blocks/element/__like/_active/element__like_active.css";
 @import "../blocks/element/__figure/element__figure.css";
 @import "../blocks/element/__image/element__image.css";
 @import "../blocks/element/__caption/element__caption.css";
