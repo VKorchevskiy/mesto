@@ -28,6 +28,7 @@
 @import "../blocks/footer/footer.css";
 @import "../blocks/footer/__copyright/footer__copyright.css";
 @import "../blocks/overlay/overlay.css";
+@import "../blocks/overlay/_background-color/overlay_background-color_dark.css";
 @import "../blocks/overlay/_active/overlay_active.css";
 @import "../blocks/popup/popup.css";
 @import "../blocks/popup/_type/popup_type_profile.css";

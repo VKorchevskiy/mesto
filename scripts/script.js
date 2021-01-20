@@ -73,15 +73,22 @@ initialCards.forEach(element => addElement(element));
 function openPopup(popup) {
   ProfileNameInput.value = profileName.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
+  const element = event.target.closest('.element');
+  if (element) {
+    overlay.classList.add('overlay_background-color_dark');
+    popupImage.setAttribute('src', element.querySelector('.element__image').getAttribute('src'));
+    popupCaption.textContent = element.querySelector('.element__title').textContent;
+    element.closest('.overlay')
+  }
   overlay.classList.add('overlay_active');
   popup.classList.add('popup_active');
-  console.log(popup)
 }
 
 function closePopup(popup) {
   overlay.classList.remove('overlay_active');
   popupTypeProfile.classList.remove('popup_active');
   popupTypeElement.classList.remove('popup_active');
+  popupTypeImage.classList.remove('popup_active');
   resetForm(popup);
 }
 
@@ -89,6 +96,8 @@ function resetForm(popup) {
   if (popup.querySelector('.form')) {
     popup.querySelector('.form').reset();
   }
+  popup.closest('.overlay').classList.remove('overlay_background-color_dark');
+  console.log(popup.closest('.overlay'))
 }
 
 function getSubmitPopup(evt) {
