@@ -1,5 +1,6 @@
 const editButton = document.querySelector('.profile__edit');
 const addButton = document.querySelector('.profile__add');
+const elementTemplate = document.querySelector('#element').content;
 const overlay = document.querySelector('.overlay');
 
 const popupTypeProfile = overlay.querySelector('.popup_type_profile');
@@ -50,20 +51,20 @@ const initialCards = [
 ];
 
 function addElement(el) {
-  const elementTemplate = document.querySelector('#element').content;
   const cardElement = elementTemplate.cloneNode(true);
   const likeButton = cardElement.querySelector('.element__like');
   const trashButton = cardElement.querySelector('.element__trash');
-  cardElement.querySelector('.element__title').textContent = el.name;
-  cardElement.querySelector('.element__image').setAttribute('src', el.link);
+  const imageButton = cardElement.querySelector('.element__image');
+  const elementTitle = cardElement.querySelector('.element__title');
+  elementTitle.textContent = el.name;
+  imageButton.setAttribute('src', el.link);
   likeButton.addEventListener('click', () => {
     likeButton.classList.toggle('element__like_active');
   });
   trashButton.addEventListener('click', () => {
-    console.log(cardElement.querySelector('.element'))
     trashButton.closest('.element').remove();
-
   });
+  imageButton.addEventListener('click', () => openPopup(popupTypeImage));
   elementConteiner.prepend(cardElement);
 }
 
@@ -74,6 +75,7 @@ function openPopup(popup) {
   profileDescriptionInput.value = profileDescription.textContent;
   overlay.classList.add('overlay_active');
   popup.classList.add('popup_active');
+  console.log(popup)
 }
 
 function closePopup(popup) {
