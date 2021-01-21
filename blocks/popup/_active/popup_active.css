@@ -1,3 +1,15 @@
-.popup_active {
-  visibility: visible;
+@keyframes popupActive {
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
 }
+
+.popup_active {
+  animation: popupActive 0.3s linear 0s 1 normal forwards;
+}
+

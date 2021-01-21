@@ -26,7 +26,7 @@
     </section>
 
     <section class="section">
-      <ul class="elements"></ul>
+      <ul class="cards"></ul>
     </section>
 
   </main>
@@ -35,54 +35,57 @@
     <p class="footer__copyright">&#169; 2020 Mesto Russia</p>
   </footer>
 
-  <section class="overlay">
-    <div class="popup popup_type_profile">
+  <div class="popup popup_type_profile">
+    <div class="popup__container">
       <h2 class=popup__title>Редактировать профиль</h2>
       <form class="form form_type_profile" name="profile-info">
         <input class="form__input-text form__input-text_type_name" type="text" name="name-profile" id="name-profile"
-          placeholder="Имя профиля" value="Жак-Ив Кусто">
+          placeholder="Имя профиля" value="" required>
         <input class="form__input-text form__input-text_type_job" type="text" name="job-profile" id="job-profile"
-          placeholder="Род деятельности" value="Исследователь океана">
+          placeholder="Род деятельности" value="" required>
         <input class="button form__save form__save_type_profile" type="submit" value="Сохранить">
       </form>
       <button class="button popup__close" type="button"></button>
     </div>
+  </div>
 
-    <div class="popup popup_type_element">
+  <div class="popup popup_type_card">
+    <div class="popup__container ">
       <h2 class=popup__title>Новое место</h2>
-      <form class="form form_type_element" name="element-info">
-        <input class="form__input-text form__input-text_type_element-name" type="text" name="element-name" id="element-name"
-          placeholder="Название" value="">
-        <input class="form__input-text form__input-text_type_element-link" type="text" name="element-link" id="element-link"
-          placeholder="Ссылка на картинку" value="">
-        <input class="button form__save form__save_type_element" type="submit" value="Сохранить">
+      <form class="form form_type_card" name="card-info">
+        <input class="form__input-text form__input-text_type_card-name" type="text" name="card-name" id="card-name"
+          placeholder="Название" value="" required>
+        <input class="form__input-text form__input-text_type_card-link" type="url" name="card-link" id="card-link"
+          placeholder="Ссылка на картинку" value="" required>
+        <input class="button form__save form__save_type_card" type="submit" value="Сохранить">
       </form>
       <button class="button popup__close" type="button"></button>
     </div>
+  </div>
 
-    <div class="popup popup_type_img">
+  <div class="popup popup_type_img popup_background-color_dark">
+    <div class="popup__container popup__container_img">
       <figure class="popup__figure">
         <img src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg" alt="." class="popup__image">
         <figcaption class="popup__caption">111</figcaption>
       </figure>
       <button class="button popup__close" type="button"></button>
     </div>
+  </div>
 
-  </section>
-
-  <template id="element">
-    <li class="element">
-      <figure class="element__figure">
-        <img src="./images/karachaevsk.png" alt="" class="element__image">
-        <figcaption class="element__caption">
-          <h2 class="element__title"></h2>
-          <button class="button element__like" type="button"></button>
+  <template id="card">
+    <li class="card">
+      <figure class="card__figure">
+        <img src="./images/karachaevsk.png" alt="" class="card__image">
+        <figcaption class="card__caption">
+          <h2 class="card__title"></h2>
+          <button class="button card__like" type="button"></button>
         </figcaption>
       </figure>
-      <button class="button element__trash" type="button"></button>
+      <button class="button card__trash" type="button"></button>
     </li>
   </template>
-
+  <script src="./scripts/initial-сards.js"></script>
   <script src="./scripts/script.js"></script>
 </body>
 

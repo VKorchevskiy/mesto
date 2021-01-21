@@ -9,6 +9,6 @@
   }
 }
 
-.overlay_inactive {
+.popup_inactive {
   animation: overlayInactive 0.3s linear 0s 1 normal forwards;
 }

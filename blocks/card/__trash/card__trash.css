@@ -1,4 +1,4 @@
-.element__trash {
+.card__trash {
   width: 18px;
   height: 19.3px;
   display: inline-block;
@@ -13,9 +13,4 @@
   position: absolute;
   top: 18px;
   right: 15px;
-}
-
-.element__trash:hover {
-  opacity: 1;
-  background-image: url("../../../images/trash_hover.svg");
 }

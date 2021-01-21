@@ -1,4 +1,4 @@
-.element__like {
+.card__like {
   width: 20.76px;
   height: 18.13px;
   display: inline-block;
@@ -11,11 +11,11 @@
   margin: 0;
 }
 
-.element__like:hover {
+.card__like:hover {
   opacity: 0.5;
 }
 
-.element__like:active {
+.card__like:active {
   background-image: url("../../../images/like_active.svg");
   opacity: 1;
   outline: none;

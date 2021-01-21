@@ -1,4 +1,4 @@
-.elements {
+.cards {
   list-style: none;
   margin: 0;
   padding: 36px 0 0;
@@ -11,7 +11,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .elements {
+  .cards {
     grid-template-columns: repeat(auto-fill, 282px);
     padding-top: 51px;
   }
