@@ -7,8 +7,6 @@
   box-sizing: border-box;
   position: absolute;
   visibility: hidden;
-  opacity: 0;
-  transition: opacity 1s linear 0s;
 }
 
 @media screen and (min-width: 768px) {

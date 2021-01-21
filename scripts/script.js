@@ -52,25 +52,31 @@ const initialCards = [
 
 function addElement(el) {
   const cardElement = elementTemplate.cloneNode(true);
-  const likeButton = cardElement.querySelector('.element__like');
-  const trashButton = cardElement.querySelector('.element__trash');
   const imageButton = cardElement.querySelector('.element__image');
   const elementTitle = cardElement.querySelector('.element__title');
   elementTitle.textContent = el.name;
   imageButton.setAttribute('src', el.link);
-  likeButton.addEventListener('click', () => {
-    likeButton.classList.toggle('element__like_active');
-  });
-  trashButton.addEventListener('click', () => {
-    trashButton.closest('.element').remove();
-  });
-  imageButton.addEventListener('click', () => openPopup(popupTypeImage));
+  setListeners(cardElement);
   elementConteiner.prepend(cardElement);
+}
+
+function setListeners(cardElement) {
+  cardElement.querySelector('.element__like').addEventListener('click', () => handleLike(event) );
+  cardElement.querySelector('.element__trash').addEventListener('click', () => handleDelete(event));
+  cardElement.querySelector('.element__image').addEventListener('click', () => handleOpenPopup(popupTypeImage));
+}
+
+function handleLike(event) {
+  event.target.classList.toggle('element__like_active');
+}
+
+function handleDelete(event) {
+  event.target.closest('.element').remove();
 }
 
 initialCards.forEach(element => addElement(element));
 
-function openPopup(popup) {
+function handleOpenPopup(popup) {
   ProfileNameInput.value = profileName.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
   const element = event.target.closest('.element');
@@ -80,19 +86,21 @@ function openPopup(popup) {
     popupCaption.textContent = element.querySelector('.element__title').textContent;
     element.closest('.overlay')
   }
+  overlay.classList.remove('overlay_inactive');
   overlay.classList.add('overlay_active');
   popup.classList.add('popup_active');
+  popup.classList.remove('overlay_inactive');
 }
 
-function closePopup(popup) {
+function handleClosePopup(popup) {
+  overlay.classList.add('overlay_inactive');
   overlay.classList.remove('overlay_active');
-  popupTypeProfile.classList.remove('popup_active');
-  popupTypeElement.classList.remove('popup_active');
-  popupTypeImage.classList.remove('popup_active');
-  resetForm(popup);
+  popup.classList.remove('popup_active');
+  popup.classList.add('overlay_inactive');
+  resetPopupForm(popup);
 }
 
-function resetForm(popup) {
+function resetPopupForm(popup) {
   if (popup.querySelector('.form')) {
     popup.querySelector('.form').reset();
   }
@@ -111,7 +119,7 @@ function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = ProfileNameInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
-  closePopup(getSubmitPopup(evt));
+  handleClosePopup(getSubmitPopup(evt));
 }
 
 function handleElementFormSubmit(evt) {
@@ -120,18 +128,20 @@ function handleElementFormSubmit(evt) {
     name: elementNameInput.value,
     link: elementLinkInput.value
   });
-  closePopup(getSubmitPopup(evt));
+  handleClosePopup(getSubmitPopup(evt));
 }
 
-overlay.addEventListener('click', (evt) => {
-  if (evt.target === evt.currentTarget) {
-    closePopup(getActivePopup(evt));
+function handleCloseOverlay(event) {
+  if (event.target === event.currentTarget) {
+    handleClosePopup(getActivePopup(event));
   }
-});
-closePopupProfileButton.addEventListener('click', () => closePopup(popupTypeProfile));
-closePopupElementButton.addEventListener('click', () => closePopup(popupTypeElement));
-closePopupImageButton.addEventListener('click', () => closePopup(popupTypeImage));
-editButton.addEventListener('click', () => openPopup(popupTypeProfile));
-addButton.addEventListener('click', () => openPopup(popupTypeElement));
+}
+
+overlay.addEventListener('click', () => handleCloseOverlay(event));
+closePopupProfileButton.addEventListener('click', () => handleClosePopup(popupTypeProfile));
+closePopupElementButton.addEventListener('click', () => handleClosePopup(popupTypeElement));
+closePopupImageButton.addEventListener('click', () => handleClosePopup(popupTypeImage));
+editButton.addEventListener('click', () => handleOpenPopup(popupTypeProfile));
+addButton.addEventListener('click', () => handleOpenPopup(popupTypeElement));
 formProfile.addEventListener('submit', handleProfileFormSubmit);
 formElement.addEventListener('submit', handleElementFormSubmit);
