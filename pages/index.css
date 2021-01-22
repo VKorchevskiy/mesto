@@ -32,7 +32,6 @@
 @import "../blocks/popup/_type/popup_type_profile.css";
 @import "../blocks/popup/_type/popup_type_img.css";
 @import "../blocks/popup/_background-color/popup_background-color_dark.css";
-@import "../blocks/popup/_inactive/popup_inactive.css";
 @import "../blocks/popup/_active/popup_active.css";
 @import "../blocks/popup/__title/popup__title.css";
 @import "../blocks/popup/__image/popup__image.css";
