@@ -29,7 +29,7 @@ function createCard(el) {
   cardTitle.textContent = el.name;
   imageButton.setAttribute('src', el.link);
   imageButton.setAttribute('alt', el.name);
-  setListenersCard(card);
+  setListenersCard(card, el);
   return card;
 }
 
@@ -37,10 +37,10 @@ function renderCard(card) {
   cardConteiner.prepend(card);
 }
 
-function setListenersCard(card) {
+function setListenersCard(card, el) {
   card.querySelector('.card__like').addEventListener('click', handleLike);
   card.querySelector('.card__trash').addEventListener('click', handleDelete);
-  card.querySelector('.card__image').addEventListener('click', () => handleInitImagePopup(popupTypeImage));
+  card.querySelector('.card__image').addEventListener('click', () => handleInitImagePopup(event, el));
 }
 
 function handleLike(evt) {
@@ -57,41 +57,39 @@ function openPopup(popup) {
   popup.classList.add('popup_active');
 }
 
-function handleInitProfilePopup(popup) {
+function handleInitProfilePopup() {
   formProfile.reset();
   profileNameInput.value = profileName.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
-  openPopup(popup);
+  openPopup(popupTypeProfile);
 }
 
-function handleProfileFormSubmit(popup) {
+function handleProfileFormSubmit(event) {
   event.preventDefault();
   profileName.textContent = profileNameInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
-  handleClosePopup(popup);
-  formProfile.reset();
+  handleClosePopup(popupTypeProfile);
 }
 
-function handleInitCardPopup(popup) {
+function handleInitCardPopup() {
   formCard.reset();
-  openPopup(popup);
+  openPopup(popupTypeCard);
 }
 
-function handleCardFormSubmit(popup) {
+function handleCardFormSubmit(event) {
   event.preventDefault();
   renderCard(createCard({
     name: cardNameInput.value,
     link: cardLinkInput.value
   }));
-  handleClosePopup(popup);
-  formCard.reset();
+  handleClosePopup(popupTypeCard);
 }
 
-function handleInitImagePopup(popup) {
-  popupImage.setAttribute('src', event.target.getAttribute('src'));
-  popupImage.setAttribute('alt', event.target.getAttribute('alt'));
-  popupCaption.textContent = event.target.closest('.card').querySelector('.card__title').textContent;
-  openPopup(popup);
+function handleInitImagePopup(event, el) {
+  popupImage.setAttribute('src', el.link);
+  popupImage.setAttribute('alt', el.name);
+  popupCaption.textContent = el.name;
+  openPopup(popupTypeImage);
 }
 
 function handleClosePopup(popup) {
@@ -109,10 +107,10 @@ function setListenersOverlay(el) {
 }
 
 popups.forEach((el) => setListenersOverlay(el));
-editButton.addEventListener('click', () => handleInitProfilePopup(popupTypeProfile));
-formProfile.addEventListener('submit', () => handleProfileFormSubmit(popupTypeProfile));
+editButton.addEventListener('click', handleInitProfilePopup);
+formProfile.addEventListener('submit', () => handleProfileFormSubmit(event));
 closePopupProfileButton.addEventListener('click', () => handleClosePopup(popupTypeProfile));
-addButton.addEventListener('click', () => handleInitCardPopup(popupTypeCard));
-formCard.addEventListener('submit', () => handleCardFormSubmit(popupTypeCard));
+addButton.addEventListener('click', handleInitCardPopup);
+formCard.addEventListener('submit', () => handleCardFormSubmit(event));
 closePopupCardButton.addEventListener('click', () => handleClosePopup(popupTypeCard));
 closePopupImageButton.addEventListener('click', () => handleClosePopup(popupTypeImage));
