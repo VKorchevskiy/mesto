@@ -107,6 +107,7 @@ initialCards.forEach(element => renderCard(createCard(element)));
 
 function openPopup(popup) {
   popup.classList.add('popup_active');
+  document.addEventListener('keydown', handleCloseEscOverlay);
 }
 
 function openValidateForm(form) {
@@ -153,6 +154,7 @@ function initImagePopup(event) {
 
 function handleClosePopup(popup) {
   popup.classList.remove('popup_active');
+  document.removeEventListener('keydown', handleCloseEscOverlay);
 }
 
 function handleCloseOverlay(event) {
@@ -161,9 +163,9 @@ function handleCloseOverlay(event) {
   }
 }
 
-function handleCloseEscOverlay(event) {
+function handleCloseEscOverlay() {
   const popupActive = document.querySelector('.popup_active');
-  if (event.key === 'Escape' && popupActive) {
+  if (event.key === 'Escape') {
     handleClosePopup(popupActive);
   }
 }
@@ -174,7 +176,6 @@ function handleCardContainer(event) {
   if (event.target.classList.contains('card__image')) initImagePopup(event);
 }
 
-document.addEventListener('keydown', handleCloseEscOverlay);
 document.addEventListener('click', handleCloseOverlay);
 cardContainer.addEventListener('click', handleCardContainer);
 editButton.addEventListener('click', handleInitProfilePopup);
