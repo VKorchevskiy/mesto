@@ -2,6 +2,7 @@ const editButton = document.querySelector('.profile__edit');
 const addButton = document.querySelector('.profile__add');
 const cardTemplate = document.querySelector('#card').content;
 const cardContainer = document.querySelector('.cards');
+
 const popupTypeProfile = document.querySelector('.popup_type_profile');
 const closePopupProfileButton = popupTypeProfile.querySelector('.popup__close');
 const formProfile = popupTypeProfile.querySelector('.form_type_profile');
@@ -15,7 +16,6 @@ const closePopupCardButton = popupTypeCard.querySelector('.popup__close');
 const formCard = popupTypeCard.querySelector('.form_type_card');
 const cardNameInput = popupTypeCard.querySelector('.form__input-text_type_card-name');
 const cardLinkInput = popupTypeCard.querySelector('.form__input-text_type_card-link');
-const cardConteiner = document.querySelector('.cards');
 
 const popupTypeImage = document.querySelector('.popup_type_img');
 const closePopupImageButton = popupTypeImage.querySelector('.popup__close');
@@ -67,9 +67,7 @@ const enableValidation = () => {
 };
 
 function hasInvalidInput(inputList) {
-  return inputList.some((inputElement) => {
-    return !inputElement.validity.valid;
-  });
+  return inputList.some((inputElement) => !inputElement.validity.valid);
 }
 
 function toggleButtonState(inputList, buttonElement) {
@@ -94,7 +92,7 @@ function createCard(el) {
 }
 
 function renderCard(card) {
-  cardConteiner.prepend(card);
+  cardContainer.prepend(card);
 }
 
 function likeCard(evt) {
@@ -111,15 +109,22 @@ function openPopup(popup) {
   popup.classList.add('popup_active');
 }
 
+function openValidateForm(form) {
+  const inputList = Array.from(form.querySelectorAll('.form__input-text'));
+  const buttonElement = form.querySelector('.form__save');
+  toggleButtonState(inputList, buttonElement);
+  inputList.forEach((inputElement) => checkInputValidity(form, inputElement));
+}
+
 function handleInitProfilePopup() {
   formProfile.reset();
   profileNameInput.value = profileName.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
+  openValidateForm(formProfile);
   openPopup(popupTypeProfile);
 }
 
-function handleProfileFormSubmit(event) {
-  event.preventDefault();
+function handleProfileFormSubmit() {
   profileName.textContent = profileNameInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
   handleClosePopup(popupTypeProfile);
@@ -127,11 +132,11 @@ function handleProfileFormSubmit(event) {
 
 function handleInitCardPopup() {
   formCard.reset();
+  openValidateForm(formCard);
   openPopup(popupTypeCard);
 }
 
-function handleCardFormSubmit(event) {
-  event.preventDefault();
+function handleCardFormSubmit() {
   renderCard(createCard({
     name: cardNameInput.value,
     link: cardLinkInput.value
@@ -151,18 +156,19 @@ function handleClosePopup(popup) {
 }
 
 function handleCloseOverlay(event) {
-  if(event.target.classList.contains('popup')) {
+  if (event.target.classList.contains('popup')) {
     handleClosePopup(event.target);
   }
 }
 
 function handleCloseEscOverlay(event) {
-  if (event.key === 'Escape' && document.querySelector('.popup_active')) {
-    handleClosePopup(document.querySelector('.popup_active'));
+  const popupActive = document.querySelector('.popup_active');
+  if (event.key === 'Escape' && popupActive) {
+    handleClosePopup(popupActive);
   }
 }
 
-function handleCardConteiner(event) {
+function handleCardContainer(event) {
   if (event.target.classList.contains('card__like')) likeCard(event);
   if (event.target.classList.contains('card__trash')) deleteCard(event);
   if (event.target.classList.contains('card__image')) initImagePopup(event);
@@ -170,7 +176,7 @@ function handleCardConteiner(event) {
 
 document.addEventListener('keydown', handleCloseEscOverlay);
 document.addEventListener('click', handleCloseOverlay);
-cardContainer.addEventListener('click', handleCardConteiner);
+cardContainer.addEventListener('click', handleCardContainer);
 editButton.addEventListener('click', handleInitProfilePopup);
 formProfile.addEventListener('submit', handleProfileFormSubmit);
 closePopupProfileButton.addEventListener('click', () => handleClosePopup(popupTypeProfile));
