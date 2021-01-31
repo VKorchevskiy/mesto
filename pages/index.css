@@ -52,7 +52,9 @@
 @import "../blocks/form/__input-text/_type/form__input-text_type_job.css";
 @import "../blocks/form/__input-text/_type/form__input-text_type_card-name.css";
 @import "../blocks/form/__input-text/_type/form__input-text_type_card-link.css";
+@import "../blocks/form/__input-text/_type/form__input-text_type_error.css";
 @import "../blocks/form/__input-error/form__input-error.css";
+@import "../blocks/form/__input-error/_active/form__input-error_active.css";
 /* * {
   outline: 1px solid red;
 }

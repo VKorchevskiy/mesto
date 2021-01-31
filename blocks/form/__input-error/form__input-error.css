@@ -6,6 +6,7 @@
   color: #FF0000;
   display: block;
   margin-bottom:13px;
+  opacity: 0;
 }
 
 .form__input-error:nth-last-child(2) {
