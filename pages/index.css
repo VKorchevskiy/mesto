@@ -46,6 +46,7 @@
 @import "../blocks/form/__save/form__save.css";
 @import "../blocks/form/__save/_type/form__save_type_profile.css";
 @import "../blocks/form/__save/_type/form__save_type_card.css";
+@import "../blocks/form/__save/_inactive/form__save_inactive.css";
 @import "../blocks/form/__input-text/form__input-text.css";
 @import "../blocks/form/__input-text/_type/form__input-text_type_name.css";
 @import "../blocks/form/__input-text/_type/form__input-text_type_job.css";

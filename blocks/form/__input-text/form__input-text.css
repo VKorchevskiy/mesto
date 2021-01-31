@@ -9,10 +9,6 @@
   width: 100%;
 }
 
-/* .form__input-text:nth-last-of-type(2) {
-  margin-bottom: 0;
-} */
-
 .form__input-text:focus {
   outline: 1px solid #000000;
 }
