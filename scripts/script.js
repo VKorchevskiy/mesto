@@ -40,7 +40,7 @@ function renderCard(card) {
 function setListenersCard(card, el) {
   card.querySelector('.card__like').addEventListener('click', handleLike);
   card.querySelector('.card__trash').addEventListener('click', handleDelete);
-  card.querySelector('.card__image').addEventListener('click', () => handleInitImagePopup(event, el));
+  card.querySelector('.card__image').addEventListener('click', () => handleInitImagePopup(el));
 }
 
 function handleLike(evt) {
@@ -85,7 +85,7 @@ function handleCardFormSubmit(event) {
   handleClosePopup(popupTypeCard);
 }
 
-function handleInitImagePopup(event, el) {
+function handleInitImagePopup(el) {
   popupImage.setAttribute('src', el.link);
   popupImage.setAttribute('alt', el.name);
   popupCaption.textContent = el.name;
@@ -108,9 +108,9 @@ function setListenersOverlay(el) {
 
 popups.forEach((el) => setListenersOverlay(el));
 editButton.addEventListener('click', handleInitProfilePopup);
-formProfile.addEventListener('submit', () => handleProfileFormSubmit(event));
+formProfile.addEventListener('submit', handleProfileFormSubmit);
 closePopupProfileButton.addEventListener('click', () => handleClosePopup(popupTypeProfile));
 addButton.addEventListener('click', handleInitCardPopup);
-formCard.addEventListener('submit', () => handleCardFormSubmit(event));
+formCard.addEventListener('submit', handleCardFormSubmit);
 closePopupCardButton.addEventListener('click', () => handleClosePopup(popupTypeCard));
 closePopupImageButton.addEventListener('click', () => handleClosePopup(popupTypeImage));
