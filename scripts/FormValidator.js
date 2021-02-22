@@ -1,6 +1,14 @@
 export class FormValidator {
-  constructor(objSelector, form) {
-    this.selector = objSelector.selector;
-    this.form = form;
+  _objSelectors;
+  _form;
+  constructor(objSelectors, form) {
+    this._objSelectors = objSelectors;
+    this._form = form;
   }
+
+
+
+
+
+
 }
