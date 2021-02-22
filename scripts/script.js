@@ -51,18 +51,11 @@ function openPopup(popup) {
   document.addEventListener('keydown', handleCloseEscOverlay);
 }
 
-function openValidateForm(form) {
-  const inputList = Array.from(form.querySelectorAll('.form__input-text'));
-  const buttonElement = form.querySelector('.form__save');
-  toggleButtonState(inputList, buttonElement);
-  inputList.forEach((inputElement) => checkInputValidity(form, inputElement));
-}
-
 function handleInitProfilePopup() {
   formProfile.reset();
   profileNameInput.value = profileName.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
-  openValidateForm(formProfile);
+  openValidateForm(formProfile, 'form__save_inactive', 'form__input-text_type_error', 'form__input-error_active');
   openPopup(popupTypeProfile);
 }
 
@@ -74,7 +67,7 @@ function handleProfileFormSubmit() {
 
 function handleInitCardPopup() {
   formCard.reset();
-  openValidateForm(formCard);
+  openValidateForm(formCard, 'form__save_inactive', 'form__input-text_type_error', 'form__input-error_active');
   openPopup(popupTypeCard);
 }
 
