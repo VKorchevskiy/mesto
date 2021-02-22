@@ -25,7 +25,7 @@ export const popupImage = popupTypeImage.querySelector('.popup__image');
 export const popupCaption = popupTypeImage.querySelector('.popup__caption');
 export const closePopupImageButton = document.querySelector('.popup_type_img').querySelector('.popup__close');
 
-const selectors = {
+const formSelectors = {
   inputSelector: '.form__input-text',
   submitButtonSelector: '.form__save',
   inactiveButtonClass: 'form__save_inactive',
@@ -33,8 +33,8 @@ const selectors = {
   errorClass: 'form__input-error_active'
 }
 
-const formProfileValidator = new FormValidator(selectors, formProfile);
-const formCardValidator = new FormValidator(selectors, formCard);
+const formProfileValidator = new FormValidator(formSelectors, formProfile);
+const formCardValidator = new FormValidator(formSelectors, formCard);
 
 formProfileValidator.enableValidation();
 formCardValidator.enableValidation();
@@ -101,13 +101,6 @@ function handleCardFormSubmit() {
   renderCard(card.generateCard());
   handleClosePopup(popupTypeCard);
 }
-
-/* function handleCardContainer(event) {
-  if (event.target.classList.contains('card__like')) likeCard(event);
-  if (event.target.classList.contains('card__trash')) deleteCard(event);
-  if (event.target.classList.contains('card__image')) initImagePopup(event);
-}
-cardContainer.addEventListener('click', handleCardContainer);*/
 
 editButton.addEventListener('click', handleInitProfilePopup);
 formProfile.addEventListener('submit', handleProfileFormSubmit);
