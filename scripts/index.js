@@ -1,6 +1,8 @@
 import { initialCards } from './initial-сards.js';
 import { FormValidator } from './FormValidator.js';
 import { Card } from './Card.js';
+import { popupTypeImage, closePopupImageButton } from '../utils/constant.js';
+import { openPopup, handleClosePopup } from '../utils/utils.js';
 
 const editButton = document.querySelector('.profile__edit');
 const addButton = document.querySelector('.profile__add');
@@ -20,11 +22,6 @@ const formCard = popupTypeCard.querySelector('.form_type_card');
 const cardNameInput = popupTypeCard.querySelector('.form__input-text_type_card-name');
 const cardLinkInput = popupTypeCard.querySelector('.form__input-text_type_card-link');
 
-export const popupTypeImage = document.querySelector('.popup_type_img');
-export const popupImage = popupTypeImage.querySelector('.popup__image');
-export const popupCaption = popupTypeImage.querySelector('.popup__caption');
-export const closePopupImageButton = document.querySelector('.popup_type_img').querySelector('.popup__close');
-
 const formSelectors = {
   inputSelector: '.form__input-text',
   submitButtonSelector: '.form__save',
@@ -43,41 +40,18 @@ function renderCard(card) {
   cardContainer.prepend(card);
 }
 
-initialCards.forEach(cardData => {
-  const card = new Card(cardData, '#card');
+function createCard(cardData, cardTemplate) {
+  const card = new Card(cardData, cardTemplate);
   renderCard(card.generateCard());
-});
-
-export function openPopup(popup) {
-  popup.classList.add('popup_active');
-  document.addEventListener('keydown', handleCloseEscOverlay);
-  document.addEventListener('click', handleCloseOverlay);
 }
 
-function handleClosePopup(popup) {
-  popup.classList.remove('popup_active');
-  document.removeEventListener('keydown', handleCloseEscOverlay);
-  document.removeEventListener('.click', handleCloseOverlay);
-}
-
-function handleCloseOverlay(event) {
-  if (event.target.classList.contains('popup')) {
-    handleClosePopup(event.target);
-  }
-}
-
-function handleCloseEscOverlay() {
-  const popupActive = document.querySelector('.popup_active');
-  if (event.key === 'Escape') {
-    handleClosePopup(popupActive);
-  }
-}
+initialCards.forEach(cardData => createCard(cardData, '#card'));
 
 function handleInitProfilePopup() {
   formProfile.reset();
   profileNameInput.value = profileName.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
-  formProfileValidator.openValidateForm();
+  formProfileValidator.checkFormValidity();
   openPopup(popupTypeProfile);
 }
 
@@ -89,16 +63,15 @@ function handleProfileFormSubmit() {
 
 function handleInitCardPopup() {
   formCard.reset();
-  formCardValidator.openValidateForm();
+  formCardValidator.checkFormValidity();
   openPopup(popupTypeCard);
 }
 
 function handleCardFormSubmit() {
-  const card = new Card({
+  createCard({
     name: cardNameInput.value,
     link: cardLinkInput.value
   }, '#card');
-  renderCard(card.generateCard());
   handleClosePopup(popupTypeCard);
 }
 

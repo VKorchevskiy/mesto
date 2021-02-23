@@ -1,10 +1,7 @@
-import { openPopup, popupTypeImage, popupImage, popupCaption } from './index.js';
+import { popupTypeImage, popupImage, popupCaption } from '../utils/constant.js';
+import { openPopup } from '../utils/utils.js';
 
 export class Card {
-  _cardTemplate
-  _name
-  _alt
-  _link
   constructor(cardData, cardTemplate) {
     this._cardTemplate = cardTemplate;
     this._name = cardData.name;
