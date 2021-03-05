@@ -1,42 +1,51 @@
 import { initialCards } from './initial-сards.js';
-import { FormValidator } from './FormValidator.js';
-import { Card } from './Card.js';
-import { popupTypeImage, closePopupImageButton } from '../utils/constant.js';
-import { openPopup, handleClosePopup } from '../utils/utils.js';
-
-const editButton = document.querySelector('.profile__edit');
-const addButton = document.querySelector('.profile__add');
-const cardContainer = document.querySelector('.cards');
-
-const popupTypeProfile = document.querySelector('.popup_type_profile');
-const closePopupProfileButton = popupTypeProfile.querySelector('.popup__close');
-const formProfile = popupTypeProfile.querySelector('.form_type_profile');
-const profileNameInput = popupTypeProfile.querySelector('.form__input-text_type_name');
-const profileDescriptionInput = popupTypeProfile.querySelector('.form__input-text_type_job');
-const profileName = document.querySelector('.profile__name');
-const profileDescription = document.querySelector('.profile__description');
-
-const popupTypeCard = document.querySelector('.popup_type_card');
-const closePopupCardButton = popupTypeCard.querySelector('.popup__close');
-const formCard = popupTypeCard.querySelector('.form_type_card');
-const cardNameInput = popupTypeCard.querySelector('.form__input-text_type_card-name');
-const cardLinkInput = popupTypeCard.querySelector('.form__input-text_type_card-link');
-
-const formSelectors = {
-  inputSelector: '.form__input-text',
-  submitButtonSelector: '.form__save',
-  inactiveButtonClass: 'form__save_inactive',
-  inputErrorClass: 'form__input-text_type_error',
-  errorClass: 'form__input-error_active'
+import FormValidator from './FormValidator.js';
+import Section from './Section.js';
+import Card from './Card.js';
+import {
+  popupTypeImage,
+  closePopupImageButton,
+  editButton, addButton,
+  cardContainerSelector,
+  popupTypeProfile,
+  closePopupProfileButton,
+  formProfile,
+  profileNameInput,
+  profileDescriptionInput,
+  profileName,
+  profileDescription,
+  popupTypeCard,
+  closePopupCardButton,
+  formCard,
+  cardNameInput,
+  cardLinkInput,
+  formSelectors,
+  cardTemplate
 }
+  from '../utils/constant.js';
+import { openPopup, handleClosePopup } from '../utils/utils.js';
 
 const formProfileValidator = new FormValidator(formSelectors, formProfile);
 const formCardValidator = new FormValidator(formSelectors, formCard);
 
+const cardsList = new Section(
+  {
+    cards: initialCards,
+    renderer: (initialCard) => {
+      const card = new Card(initialCard, cardTemplate);
+      const cardElement = card.generateCard();
+      cardsList.addItem(cardElement);
+    },
+  },
+  cardContainerSelector
+);
+
+cardsList.renderItems();
+
 formProfileValidator.enableValidation();
 formCardValidator.enableValidation();
 
-function renderCard(card) {
+/* function renderCard(card) {
   cardContainer.prepend(card);
 }
 
@@ -45,7 +54,7 @@ function createCard(cardData, cardTemplate) {
   renderCard(card.generateCard());
 }
 
-initialCards.forEach(cardData => createCard(cardData, '#card'));
+initialCards.forEach(cardData => createCard(cardData, '#card')); */
 
 function handleInitProfilePopup() {
   formProfile.reset();
