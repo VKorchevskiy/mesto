@@ -2,10 +2,14 @@ import { initialCards } from './initial-сards.js';
 import FormValidator from './FormValidator.js';
 import Section from './Section.js';
 import Card from './Card.js';
+import PopupWithImage from './PopupWithImage.js';
 import {
-  popupTypeImage,
-  closePopupImageButton,
-  editButton, addButton,
+/*   popupTypeImage,
+  popupImage,
+  popupCaption,
+  closePopupImageButton, */
+  editButton,
+  addButton,
   cardContainerSelector,
   popupTypeProfile,
   closePopupProfileButton,
@@ -20,6 +24,8 @@ import {
   cardNameInput,
   cardLinkInput,
   formSelectors,
+  selectorCloseButton,
+  popupSelectorTypeImage,
   cardTemplate
 }
   from '../utils/constant.js';
@@ -28,17 +34,21 @@ import { openPopup, handleClosePopup } from '../utils/utils.js';
 const formProfileValidator = new FormValidator(formSelectors, formProfile);
 const formCardValidator = new FormValidator(formSelectors, formCard);
 
-const cardsList = new Section(
-  {
-    cards: initialCards,
-    renderer: (initialCard) => {
-      const card = new Card(initialCard, cardTemplate);
-      const cardElement = card.generateCard();
-      cardsList.addItem(cardElement);
-    },
+const popupWithImage = new PopupWithImage(popupSelectorTypeImage)
+
+const cardsList = new Section({
+  cards: initialCards,
+  renderer: (initialCard) => {
+    const card = new Card(initialCard, cardTemplate, {
+      handleCardClick: () => {
+        popupWithImage.setEventListeners();
+        popupWithImage.open(initialCard);
+      }
+    });
+    const cardElement = card.generateCard();
+    cardsList.addItem(cardElement);
   },
-  cardContainerSelector
-);
+}, cardContainerSelector);
 
 cardsList.renderItems();
 
@@ -90,5 +100,5 @@ closePopupProfileButton.addEventListener('click', () => handleClosePopup(popupTy
 addButton.addEventListener('click', handleInitCardPopup);
 formCard.addEventListener('submit', handleCardFormSubmit);
 closePopupCardButton.addEventListener('click', () => handleClosePopup(popupTypeCard));
-closePopupImageButton.addEventListener('click', () => handleClosePopup(popupTypeImage));
+//closePopupImageButton.addEventListener('click', () => handleClosePopup(popupTypeImage));
 

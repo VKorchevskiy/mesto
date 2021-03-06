@@ -22,3 +22,4 @@ export function handleClosePopup(popup) {
   document.removeEventListener('keydown', handleCloseEscOverlay);
   document.removeEventListener('.click', handleCloseOverlay);
 }
+

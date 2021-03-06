@@ -1,7 +1,7 @@
-const popupTypeImage = document.querySelector('.popup_type_img');
+/* const popupTypeImage = document.querySelector('.popup_type_img');
 const popupImage = popupTypeImage.querySelector('.popup__image');
 const popupCaption = popupTypeImage.querySelector('.popup__caption');
-const closePopupImageButton = document.querySelector('.popup_type_img').querySelector('.popup__close');
+const closePopupImageButton = document.querySelector('.popup_type_img').querySelector('.popup__close'); */
 const editButton = document.querySelector('.profile__edit');
 const addButton = document.querySelector('.profile__add');
 const cardContainerSelector = '.cards';
@@ -27,13 +27,15 @@ const formSelectors = {
   errorClass: 'form__input-error_active'
 }
 
+const selectorCloseButton = '.popup__close';
+const popupSelectorTypeImage = '.popup_type_img';
 const cardTemplate = '#card';
 
 export {
-  popupTypeImage,
+/*   popupTypeImage,
   popupImage,
   popupCaption,
-  closePopupImageButton,
+  closePopupImageButton, */
   editButton,
   addButton,
   cardContainerSelector,
@@ -50,5 +52,7 @@ export {
   cardNameInput,
   cardLinkInput,
   formSelectors,
+  selectorCloseButton,
+  popupSelectorTypeImage,
   cardTemplate
 }

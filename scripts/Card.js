@@ -1,12 +1,13 @@
-import { popupTypeImage, popupImage, popupCaption } from '../utils/constant.js';
-import { openPopup } from '../utils/utils.js';
+/* import { popupTypeImage, popupImage, popupCaption } from '../utils/constant.js';
+import { openPopup } from '../utils/utils.js'; */
 
 export default class Card {
-  constructor(cardData, cardTemplate) {
+  constructor(cardData, cardTemplate, {handleCardClick}) {
     this._cardTemplate = cardTemplate;
     this._name = cardData.name;
     this._alt = cardData.name;
     this._link = cardData.link;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -38,13 +39,13 @@ export default class Card {
     this._like = this._element.querySelector('.card__like');
     this._like.addEventListener('click', () => this._handleLikeCard());
     this._element.querySelector('.card__trash').addEventListener('click', () => this._handleDeleteCard());
-    this._image.addEventListener('click', () => this._initImagePopup());
+    this._image.addEventListener('click', this._handleCardClick);
   }
 
-  _initImagePopup() {
+/*   _initImagePopup() {
     popupImage.setAttribute('src', this._link);
     popupImage.setAttribute('alt', this._name);
     popupCaption.textContent = this._name;
     openPopup(popupTypeImage);
-  }
+  } */
 }
