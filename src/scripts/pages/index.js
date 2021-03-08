@@ -35,7 +35,6 @@ const userInfo = new UserInfo({ selectorProfileName: selectorProfileName, select
 const popupWithFormProfile = new PopupWithForm(selectorPopupTypeProfile, {
   submitForm: () => {
     userInfo.setUserInfo({ userName: profileNameInput.value, userDescription: profileDescriptionInput.value })
-    popupWithFormProfile._getInputValues();
     popupWithFormProfile.close();
   },
 });
@@ -81,7 +80,6 @@ const popupWithFormCard = new PopupWithForm(selectorPopupTypeCard, {
       }
     );
     cardsList.addItem(card.generateCard());
-    popupWithFormCard._getInputValues();
     popupWithFormCard.close();
   },
 });
