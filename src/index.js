@@ -1,10 +1,10 @@
-import { initialCards } from '../utils/initial-сards.js';
-import FormValidator from '../components/FormValidator.js';
-import Section from '../components/Section.js';
-import Card from '../components/Card.js';
-import PopupWithImage from '../components/PopupWithImage.js';
-import PopupWithForm from '../components/PopupWithForm.js';
-import UserInfo from '../components/UserInfo.js';
+import { initialCards } from './utils/initial-сards.js';
+import FormValidator from './components/FormValidator.js';
+import Section from './components/Section.js';
+import Card from './components/Card.js';
+import PopupWithImage from './components/PopupWithImage.js';
+import PopupWithForm from './components/PopupWithForm.js';
+import UserInfo from './components/UserInfo.js';
 import {
   editButton,
   addButton,
@@ -23,7 +23,7 @@ import {
   selectorProfileName,
   selectorProfileDescription,
 }
-  from '../utils/constant.js';
+  from './utils/constant.js';
 
 const formProfileValidator = new FormValidator(formSelectors, formProfile);
 const formCardValidator = new FormValidator(formSelectors, formCard);
