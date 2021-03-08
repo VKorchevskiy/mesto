@@ -1,32 +1,21 @@
-import { initialCards } from './initial-сards.js';
-import FormValidator from './FormValidator.js';
-import Section from './Section.js';
-import Card from './Card.js';
-import PopupWithImage from './PopupWithImage.js';
-import PopupWithForm from './PopupWithForm.js';
-import UserInfo from './UserInfo.js';
+import { initialCards } from '../utils/initial-сards.js';
+import FormValidator from '../components/FormValidator.js';
+import Section from '../components/Section.js';
+import Card from '../components/Card.js';
+import PopupWithImage from '../components/PopupWithImage.js';
+import PopupWithForm from '../components/PopupWithForm.js';
+import UserInfo from '../components/UserInfo.js';
 import {
-  popupTypeImage,
-  popupImage,
-  popupCaption,
-  closePopupImageButton,
   editButton,
   addButton,
   cardContainerSelector,
-  popupTypeProfile,
-  closePopupProfileButton,
   formProfile,
   profileNameInput,
   profileDescriptionInput,
-  profileName,
-  profileDescription,
-  popupTypeCard,
-  closePopupCardButton,
   formCard,
   cardNameInput,
   cardLinkInput,
   formSelectors,
-  selectorCloseButton,
   selectorPopupTypeImage,
   cardTemplate,
   selectorPopupTypeProfile,
@@ -35,7 +24,6 @@ import {
   selectorProfileDescription,
 }
   from '../utils/constant.js';
-import { openPopup, handleClosePopup } from '../utils/utils.js';
 
 const formProfileValidator = new FormValidator(formSelectors, formProfile);
 const formCardValidator = new FormValidator(formSelectors, formCard);
