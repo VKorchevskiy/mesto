@@ -1,4 +1,4 @@
-import { initialCards } from './utils/initial-сards.js';
+/* import { initialCards } from './utils/initial-сards.js';
 import FormValidator from './components/FormValidator.js';
 import Section from './components/Section.js';
 import Card from './components/Card.js';
@@ -92,3 +92,10 @@ function handleInitCardPopup() {
 
 editButton.addEventListener('click', handleInitProfilePopup);
 addButton.addEventListener('click', handleInitCardPopup);
+ */
+
+//для теста сборки -> !удалить!
+const numbers = [2, 3, 5];
+const doubledNumbers = numbers.map(number => number * 2);
+console.log(doubledNumbers);
+console.log('Hello world!');
