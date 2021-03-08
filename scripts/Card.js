@@ -1,12 +1,9 @@
-/* import { popupTypeImage, popupImage, popupCaption } from '../utils/constant.js';
-import { openPopup } from '../utils/utils.js'; */
-
 export default class Card {
-  constructor(cardData, cardTemplate, {handleCardClick}) {
+  constructor({name, link}, cardTemplate, {handleCardClick}) {
     this._cardTemplate = cardTemplate;
-    this._name = cardData.name;
-    this._alt = cardData.name;
-    this._link = cardData.link;
+    this._name = name;
+    this._alt = name;
+    this._link = link;
     this._handleCardClick = handleCardClick;
   }
 
@@ -27,6 +24,10 @@ export default class Card {
     return this._element;
   }
 
+  getCardInfo() {
+    return {name: this._name, link: this._link};
+  }
+
   _handleLikeCard() {
     this._like.classList.toggle('card__like_active');
   }
@@ -41,11 +42,4 @@ export default class Card {
     this._element.querySelector('.card__trash').addEventListener('click', () => this._handleDeleteCard());
     this._image.addEventListener('click', this._handleCardClick);
   }
-
-/*   _initImagePopup() {
-    popupImage.setAttribute('src', this._link);
-    popupImage.setAttribute('alt', this._name);
-    popupCaption.textContent = this._name;
-    openPopup(popupTypeImage);
-  } */
 }
