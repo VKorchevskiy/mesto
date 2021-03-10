@@ -22,17 +22,12 @@ setEventListeners() {
   this._form.addEventListener('submit', this._submitFunction);
 }
 
-_removeEventListeners() {
-  this._form.removeEventListener('submit', this._submitFunction);
-}
-
   _submitFunction() {
     this._submitForm(this._getInputValues());
   }
 
   close() {
     super.close();
-    this._removeEventListeners();
     this._form.reset();
   }
 }
