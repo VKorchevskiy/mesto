@@ -1,5 +1,5 @@
 export default class Card {
-  constructor({name, link}, cardTemplate, {handleCardClick}) {
+  constructor({ name, link }, cardTemplate, { handleCardClick }) {
     this._cardTemplate = cardTemplate;
     this._name = name;
     this._alt = name;
@@ -25,7 +25,7 @@ export default class Card {
   }
 
   getCardInfo() {
-    return {name: this._name, link: this._link};
+    return { name: this._name, link: this._link };
   }
 
   _handleLikeCard() {

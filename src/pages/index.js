@@ -1,4 +1,4 @@
-/* import './pages/index.css'; */
+import './index.css';
 import { initialCards } from '../utils/initial-сards.js';
 import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
@@ -34,7 +34,7 @@ popupWithImage.setEventListeners();
 const userInfo = new UserInfo({ selectorProfileName: selectorProfileName, selectorProfileDescription: selectorProfileDescription });
 
 const popupWithFormProfile = new PopupWithForm(selectorPopupTypeProfile, {
-  submitForm: ({'name-profile': userName, 'job-profile': userDescription }) => {
+  submitForm: ({ 'name-profile': userName, 'job-profile': userDescription }) => {
     userInfo.setUserInfo({ userName, userDescription });
     popupWithFormProfile.close();
   },
@@ -43,23 +43,23 @@ const popupWithFormProfile = new PopupWithForm(selectorPopupTypeProfile, {
 popupWithFormProfile.setEventListeners();
 
 function handleInitProfilePopup() {
-  const {userName, userDescription} = userInfo.getUserInfo();
+  const { userName, userDescription } = userInfo.getUserInfo();
   profileNameInput.value = userName;
   profileDescriptionInput.value = userDescription;
   formProfileValidator.checkFormValidity();
   popupWithFormProfile.open();
 }
 
-function createCard ({name, link}, cardTemplate) {
+function createCard({ name, link }, cardTemplate) {
   return new Card(
     { name, link },
-     cardTemplate,
-     {
-       handleCardClick: () => {
-         popupWithImage.open({ name, link });
-       }
-     }
-   );
+    cardTemplate,
+    {
+      handleCardClick: () => {
+        popupWithImage.open({ name, link });
+      }
+    }
+  );
 }
 
 const cardsList = new Section({
@@ -78,15 +78,6 @@ formCardValidator.enableValidation();
 const popupWithFormCard = new PopupWithForm(selectorPopupTypeCard, {
   submitForm: ({ 'card-name': name, 'card-link': link }) => {
     const card = createCard({ name, link }, cardTemplate);
-    /* new Card(
-     { name, link },
-      cardTemplate,
-      {
-        handleCardClick: () => {
-          popupWithImage.open({ name, link });
-        }
-      }
-    ); */
     cardsList.addItem(card.generateCard());
     popupWithFormCard.close();
   },

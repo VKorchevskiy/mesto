@@ -1,5 +1,5 @@
 export default class UserInfo {
-  constructor({selectorProfileName, selectorProfileDescription}) {
+  constructor({ selectorProfileName, selectorProfileDescription }) {
     this._selectorProfileName = selectorProfileName;
     this._selectorProfileDescription = selectorProfileDescription;
     this._userName = document.querySelector(selectorProfileName);
@@ -13,7 +13,7 @@ export default class UserInfo {
     }
   }
 
-  setUserInfo({userName, userDescription}) {
+  setUserInfo({ userName, userDescription }) {
     this._userName.textContent = userName;
     this._userDescription.textContent = userDescription;
   }
