@@ -1,10 +1,8 @@
-import { selectorCloseButton } from '../utils/constant.js';
-
 export default class Popup {
   constructor(popupSelector) {
     this._popupSelector = popupSelector;
     this._popup = document.querySelector(this._popupSelector);
-    this._buttonClose = this._popup.querySelector(selectorCloseButton);
+    this._buttonClose = this._popup.querySelector('.popup__close');
     this._handleEscClose = this._handleEscClose.bind(this);
     this._handleClickOverlayClose = this._handleClickOverlayClose.bind(this);
     this.close = this.close.bind(this);

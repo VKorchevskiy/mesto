@@ -14,8 +14,6 @@ import {
   profileNameInput,
   profileDescriptionInput,
   formCard,
-  cardNameInput,
-  cardLinkInput,
   formSelectors,
   selectorPopupTypeImage,
   cardTemplate,
@@ -45,9 +43,9 @@ const popupWithFormProfile = new PopupWithForm(selectorPopupTypeProfile, {
 popupWithFormProfile.setEventListeners();
 
 function handleInitProfilePopup() {
-  const profileInfo = userInfo.getUserInfo();
-  profileNameInput.value = profileInfo.userName;
-  profileDescriptionInput.value = profileInfo.userDescription;
+  const {userName, userDescription} = userInfo.getUserInfo();
+  profileNameInput.value = userName;
+  profileDescriptionInput.value = userDescription;
   formProfileValidator.checkFormValidity();
   popupWithFormProfile.open();
 }
