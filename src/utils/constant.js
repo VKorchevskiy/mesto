@@ -1,4 +1,5 @@
 const editButton = document.querySelector('.profile__edit');
+const editButtonAvatar = document.querySelector('.button_type_edit-avatar');
 const addButton = document.querySelector('.profile__add');
 const cardContainerSelector = '.cards';
 const popupTypeProfile = document.querySelector('.popup_type_profile');
@@ -7,6 +8,10 @@ const profileNameInput = popupTypeProfile.querySelector('.form__input-text_type_
 const profileDescriptionInput = popupTypeProfile.querySelector('.form__input-text_type_job');
 const popupTypeCard = document.querySelector('.popup_type_card');
 const formCard = popupTypeCard.querySelector('.form_type_card');
+const selectorUserAvatar = '.profile__avatar';
+const selectorPopupTypeAvatar = '.popup_type_user-avatar';
+const popupTypeAvatar = document.querySelector(selectorPopupTypeAvatar);
+const formAvatar = popupTypeAvatar.querySelector('.form')
 const formSelectors = {
   inputSelector: '.form__input-text',
   submitButtonSelector: '.form__save',
@@ -14,12 +19,26 @@ const formSelectors = {
   inputErrorClass: 'form__input-text_type_error',
   errorClass: 'form__input-error_active'
 }
+const cohortId = 'cohort-21';
+
+const optionsApi = {
+  urlUserMe: `https://mesto.nomoreparties.co/v1/${cohortId}/users/me`,
+  urlCards: `https://mesto.nomoreparties.co/v1/${cohortId}/cards`,
+  headers: {
+    'Content-Type': 'application/json',
+    'authorization': '69f5d24a-9d82-4482-8712-0c3c63467f5c',
+  },
+}
+
+
 
 const selectorCloseButton = '.popup__close';
 const selectorPopupTypeImage = '.popup_type_img';
 const cardTemplate = '#card';
 
 const selectorPopupTypeProfile = '.popup_type_profile';
+
+
 
 const selectorPopupTypeCard = '.popup_type_card';
 
@@ -28,13 +47,22 @@ const selectorProfileDescription = '.profile__description';
 
 export {
   editButton,
+  editButtonAvatar,
   addButton,
   cardContainerSelector,
+  popupTypeProfile,
   formProfile,
   profileNameInput,
   profileDescriptionInput,
+  popupTypeCard,
   formCard,
+  selectorUserAvatar,
+  selectorPopupTypeAvatar,
+  popupTypeAvatar,
+  formAvatar,
   formSelectors,
+  optionsApi,
+  selectorCloseButton,
   selectorPopupTypeImage,
   cardTemplate,
   selectorPopupTypeProfile,
