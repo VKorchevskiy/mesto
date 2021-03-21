@@ -17,8 +17,10 @@
 
   <main class="content page__content">
     <section class="profile">
-      <img src="<%=require('./images/avatar.jpg')%>" alt="Жак-Ив Кусто." class="profile__avatar">
-      <!-- <img src="./images/avatar.jpg" alt="Жак-Ив Кусто." class="profile__avatar"> -->
+      <button class="button button_type_edit-avatar" type="button" aria-label="Редактировать аватар">
+        <img src="<%=require('./images/avatar.jpg')%>" alt="Жак-Ив Кусто." class="profile__avatar">
+        <!-- <img src="./images/avatar.jpg" alt="Жак-Ив Кусто." class="profile__avatar"> -->
+      </button>
       <div class="profile__info">
         <h1 class="profile__name">Жак-Ив Кусто</h1>
         <button class="button profile__edit" type="button" aria-label="Редактировать"></button>
@@ -39,7 +41,7 @@
 
   <div class="popup popup_type_profile">
     <div class="popup__container">
-      <h2 class=popup__title>Редактировать профиль</h2>
+      <h2 class="popup__title">Редактировать профиль</h2>
       <form class="form form_type_profile" name="profile-info" novalidate>
         <input class="form__input-text form__input-text_type_name" type="text" name="name-profile" id="name-profile"
           placeholder="Имя профиля" value="" required minlength=2 maxlength=40>
@@ -55,7 +57,7 @@
 
   <div class="popup popup_type_card">
     <div class="popup__container ">
-      <h2 class=popup__title>Новое место</h2>
+      <h2 class="popup__title">Новое место</h2>
       <form class="form form_type_card" name="card-info" novalidate>
         <input class="form__input-text form__input-text_type_card-name" type="text" name="card-name" id="card-name"
           placeholder="Название" value="" required minlength=2 maxlength=30>
@@ -63,6 +65,29 @@
         <input class="form__input-text form__input-text_type_card-link" type="url" name="card-link" id="card-link"
           placeholder="Ссылка на картинку" value="" required>
         <span class="form__input-error card-link-error"></span>
+        <input class="button form__save form__save_type_card" type="submit" value="Сохранить">
+      </form>
+      <button class="button popup__close" type="button" aria-label="Закрыть"></button>
+    </div>
+  </div>
+
+  <div class="popup popup_type_delete-card">
+    <div class="popup__container">
+      <h2 class="popup__title popup__title_type_delete-card">Вы уверены?</h2>
+      <form class="form form_type_delete-card" name="delete-card" novalidate>
+        <input class="button form__save form__save_type_delete-card" type="submit" value="Да">
+      </form>
+      <button class="button popup__close" type="button" aria-label="Закрыть"></button>
+    </div>
+  </div>
+
+  <div class="popup popup_type_user-avatar">
+    <div class="popup__container ">
+      <h2 class="popup__title">Обновить аватар</h2>
+      <form class="form form_type_user-avatar" name="user-avatar" novalidate>
+        <input class="form__input-text form__input-text_type_user-avatar" type="url" name="user-avatar" id="user-avatar"
+          placeholder="Ссылка на картинку" value="" required>
+        <span class="form__input-error user-avatar-error"></span>
         <input class="button form__save form__save_type_card" type="submit" value="Сохранить">
       </form>
       <button class="button popup__close" type="button" aria-label="Закрыть"></button>
@@ -87,7 +112,10 @@
         <!-- <img src="./images/karachaevsk.png" alt="." class="card__image"> -->
         <figcaption class="card__caption">
           <h2 class="card__title"></h2>
-          <button class="button card__like" type="button" aria-label="Нравится"></button>
+          <div class="card__like-container">
+            <button class="button card__like" type="button" aria-label="Нравится"></button>
+          <p class="card__like-count"></p>
+          </div>
         </figcaption>
       </figure>
       <button class="button card__trash" type="button" aria-label="Удалить"></button>
