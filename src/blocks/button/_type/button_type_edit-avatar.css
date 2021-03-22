@@ -15,6 +15,7 @@
 
 .button_type_edit-avatar::before {
   position: absolute;
+  border-radius: 50%;
   content: '';
   top: 0;
   right: 0;

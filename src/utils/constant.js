@@ -26,7 +26,7 @@ const optionsApi = {
   urlCards: `https://mesto.nomoreparties.co/v1/${cohortId}/cards`,
   headers: {
     'Content-Type': 'application/json',
-    'authorization': '69f5d24a-9d82-4482-8712-0c3c63467f5c',
+    'authorization': '1ebb7dd1-33fc-42c3-9fb6-1f66a002c6c0',
   },
 }
 

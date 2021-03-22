@@ -1,4 +1,4 @@
-import './index.css';
+/* import './index.css'; */
 //import { initialCards } from '../utils/initial-сards.js';
 import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
@@ -55,7 +55,7 @@ const userInfo = new UserInfo(
   },
 );
 
-//Отрисовка страницы данными с сервера
+//1) Взятие данных пользователя
 api.getUserInfo()
   .then(data => {
     //console.log(data);
@@ -66,45 +66,66 @@ api.getUserInfo()
     console.log(err)
   });
 
+//2) отрисовка карточек с сервера
+const cardsList = new Section({
+  renderer: (initialCard) => {
+    const card = createCard(initialCard, cardTemplate);
+    cardsList.addItem(card.generateCard());
+  },
+}, cardContainerSelector);
+
 api.getInitialCards()
   .then(data => {
     //console.log(data);
-    const cardsList = new Section({
-      cards: data,
-      renderer: (initialCard) => {
-        const card = createCard(initialCard, cardTemplate);
-        cardsList.addItem(card.generateCard());
-      },
-    }, cardContainerSelector);
-    cardsList.renderItems();
+    cardsList.renderItems(data);
   })
   .catch(err => console.log(err));
 
-//Редактирование профиля
-
-
-
-
-const popupWithImage = new PopupWithImage(selectorPopupTypeImage);
-popupWithImage.setEventListeners();
-
-
+//3) Редактирование информации профиля
 const popupWithFormProfile = new PopupWithForm(selectorPopupTypeProfile, {
-  submitForm: ({ 'name-profile': userName, 'job-profile': userDescription }) => {
-    userInfo.setUserInfo({ userName, userDescription });
-    popupWithFormProfile.close();
+  submitForm: ({ 'name-profile': name, 'job-profile': about }) => {
+    api.setUserInfo({name, about})
+    .then(({name, about}) => {
+      userInfo.setUserInfo({ name, about });
+      popupWithFormProfile.close();
+    })
+    .catch(err => console.log(err));
   },
 });
 
 popupWithFormProfile.setEventListeners();
 
 function handleInitProfilePopup() {
-  const { userName, userDescription } = userInfo.getUserInfo();
-  profileNameInput.value = userName;
-  profileDescriptionInput.value = userDescription;
+  const { name, about } = userInfo.getUserInfo();
+  profileNameInput.value = name;
+  profileDescriptionInput.value = about;
   formProfileValidator.checkFormValidity();
   popupWithFormProfile.open();
 }
+
+//4) Добавление новой карточки
+const popupWithFormCard = new PopupWithForm(selectorPopupTypeCard, {
+  submitForm: ({ 'card-name': name, 'card-link': link }) => {
+    api.setCard({name, link})
+    .then(({name, link}) => {
+      const card = createCard({ name, link }, cardTemplate);
+      cardsList.addItem(card.generateCard());
+      popupWithFormCard.close();
+    })
+    .catch(err => console.log(err));
+  },
+});
+
+popupWithFormCard.setEventListeners();
+
+function handleInitCardPopup() {
+  formCardValidator.checkFormValidity();
+  popupWithFormCard.open();
+}
+
+
+
+
 
 const popupWithFormAvatar = new PopupWithForm(selectorPopupTypeAvatar, {
   submitForm: () => {
@@ -119,6 +140,9 @@ function handleInitAvatarPopup() {
   formAvatarValidator.checkFormValidity();
   popupWithFormAvatar.open();
 }
+
+const popupWithImage = new PopupWithImage(selectorPopupTypeImage);
+popupWithImage.setEventListeners();
 
 function createCard({ name, link }, cardTemplate) {
   return new Card(
@@ -138,20 +162,7 @@ function createCard({ name, link }, cardTemplate) {
 
 
 
-const popupWithFormCard = new PopupWithForm(selectorPopupTypeCard, {
-  submitForm: ({ 'card-name': name, 'card-link': link }) => {
-    const card = createCard({ name, link }, cardTemplate);
-    cardsList.addItem(card.generateCard());
-    popupWithFormCard.close();
-  },
-});
 
-popupWithFormCard.setEventListeners();
-
-function handleInitCardPopup() {
-  formCardValidator.checkFormValidity();
-  popupWithFormCard.open();
-}
 
 editButton.addEventListener('click', handleInitProfilePopup);
 editButtonAvatar.addEventListener('click', handleInitAvatarPopup);
