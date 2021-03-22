@@ -1,10 +1,11 @@
 export default class UserInfo {
-  constructor({ selectorProfileName, selectorProfileDescription, selectorUserAvatar }) {
+  constructor({ selectorProfileName, selectorProfileDescription, selectorUserAvatar }, api) {
     this._selectorProfileName = selectorProfileName;
     this._selectorProfileDescription = selectorProfileDescription;
     this._name = document.querySelector(selectorProfileName);
     this._about = document.querySelector(selectorProfileDescription);
     this._avatar = document.querySelector(selectorUserAvatar);
+    this._api = api;
   }
 
   getUserInfo() {

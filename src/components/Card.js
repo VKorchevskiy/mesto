@@ -1,10 +1,12 @@
 export default class Card {
-  constructor({ name, link }, cardTemplate, { handleCardClick }) {
+  constructor(card, cardTemplate, { handleCardClick }, api) {
     this._cardTemplate = cardTemplate;
-    this._name = name;
-    this._alt = name;
-    this._link = link;
+    this._name = card.name;
+    this._alt = card.name;
+    this._link = card.link;
+    this._likes = card.likes;
     this._handleCardClick = handleCardClick;
+    this._api = api;
   }
 
   _getTemplate() {
@@ -14,13 +16,15 @@ export default class Card {
 
   generateCard() {
     this._element = this._getTemplate();
+    this._likesCount = this._element.querySelector('.card__like-count')
     this._image = this._element.querySelector('.card__image');
     this._element.querySelector('.card__title').textContent = this._name;
     this._image.setAttribute('src', this._link);
     this._image.setAttribute('alt', this._name);
-
+    console.log(this._likesCount);
+    console.log(this._likes.length);
+    this._likesCount.textContent = this._likes.length;
     this._setEventListeners();
-
     return this._element;
   }
 

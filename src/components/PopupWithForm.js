@@ -1,8 +1,8 @@
 import Popup from './Popup.js';
 
 export default class PopupWithForm extends Popup {
-  constructor(popupSelector, { submitForm }) {
-    super(popupSelector);
+  constructor(popupSelector, { submitForm }, api) {
+    super(popupSelector, api);
     this._form = this._popup.querySelector('.form');
     this._buttonSave = this._popup.querySelector('.form__save')
     this._submitForm = submitForm.bind(this);
