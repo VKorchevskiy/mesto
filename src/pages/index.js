@@ -1,4 +1,4 @@
-import './index.css';
+/* import './index.css'; */
 //import { initialCards } from '../utils/initial-сards.js';
 import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
@@ -59,7 +59,7 @@ const userInfo = new UserInfo(
 //1) Взятие данных пользователя
 api.getUserInfo()
   .then(data => {
-    //console.log(data);
+    console.log(data);
     userInfo.setUserInfo(data);
     userInfo.setUserAvatar(data);
   })
@@ -125,10 +125,7 @@ function handleInitCardPopup() {
   popupWithFormCard.open();
 }
 
-
-
-
-
+//Работа с попапом картинки
 const popupWithImage = new PopupWithImage(selectorPopupTypeImage);
 
 popupWithImage.setEventListeners();
@@ -147,10 +144,17 @@ function createCard(card, cardTemplate) {
   );
 }
 
+//9) Сменить аватар
 const popupWithFormAvatar = new PopupWithForm(selectorPopupTypeAvatar, {
-  submitForm: () => {
-    //userAvatar.src = ({ userName, userDescription });
-    popupWithFormAvatar.close();
+  submitForm: ({ 'user-avatar': avatar }) => {
+    console.log({avatar});
+    //userInfo.setUserAvatar( {link} );
+    api.setAvatar( {avatar} )
+    .then(( {avatar} ) => {
+      userInfo.setUserAvatar( {avatar} );
+      popupWithFormAvatar.close();
+    })
+    .catch(err => console.log(err));
   },
 });
 

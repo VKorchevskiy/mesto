@@ -21,8 +21,8 @@ export default class Card {
     this._element.querySelector('.card__title').textContent = this._name;
     this._image.setAttribute('src', this._link);
     this._image.setAttribute('alt', this._name);
-    console.log(this._likesCount);
-    console.log(this._likes.length);
+    //console.log(this._likesCount);
+    //console.log(this._likes.length);
     this._likesCount.textContent = this._likes.length;
     this._setEventListeners();
     return this._element;

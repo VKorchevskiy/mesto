@@ -22,7 +22,12 @@ export default class UserInfo {
     this._avatar.alt = `${name}.`;
   }
 
+  /**
+   * смена аватара в DOM дереве
+   * @param {*} param0 avatar - ссылка на аватар
+   */
   setUserAvatar({ avatar }) {
     this._avatar.src = avatar;
   }
+
 }

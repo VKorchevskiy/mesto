@@ -2,6 +2,7 @@ export default class Api {
   constructor(config) {
     this._urlUserMe = config.urlUserMe;
     this._urlCards = config.urlCards;
+    this._urlUserMeAvatar = config.urlUserMeAvatar;
     this._headers = config.headers;
   }
 
@@ -82,6 +83,27 @@ export default class Api {
     .catch(err => Promise.reject(err));
   }
 
+  /**
+   * Установка нового аватара
+   * @param {*} param0 link - ссылка на аватар
+   */
+  setAvatar({avatar}) {
+    return fetch(this._urlUserMeAvatar, {
+      method: 'PATCH',
+      headers: this._headers,
+      body: JSON.stringify({
+        avatar: avatar,
+      }),
+    })
+    .then(res => {
+      console.log(res)
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(new Error(`Ошибка: ${res.status}`));
+    })
+    .catch(err => Promise.reject(err));
+  }
 
 
 
