@@ -6,10 +6,10 @@ export default class Api {
     this._headers = config.headers;
   }
 
-/**
- * Взятие данных пользователя с сервера
- * @returns {*} Данные пользователя
- */
+  /**
+   * Взятие данных пользователя с сервера
+   * @returns {*} Данные пользователя
+   */
   getUserInfo() {
     return fetch(this._urlUserMe, {
       headers: this._headers,
@@ -43,7 +43,7 @@ export default class Api {
    * Обновление информации пользователя
    * @param {*} param0 name - имя пользователя, about - описание пользователя.
    */
-  setUserInfo({name, about}) {
+  setUserInfo({ name, about }) {
     return fetch(this._urlUserMe, {
       method: 'PATCH',
       headers: this._headers,
@@ -52,20 +52,20 @@ export default class Api {
         about: about,
       }),
     })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(new Error(`Ошибка: ${res.status}`));
-    })
-    .catch(err => Promise.reject(err));
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(new Error(`Ошибка: ${res.status}`));
+      })
+      .catch(err => Promise.reject(err));
   }
 
-/**
- * Добавление карточки
- * @param {*} param0 name - название карточки, link - ссылка на картинку.
- */
-  setCard({name, link}) {
+  /**
+   * Добавление карточки
+   * @param {*} param0 name - название карточки, link - ссылка на картинку.
+   */
+  setCard({ name, link }) {
     return fetch(this._urlCards, {
       method: 'POST',
       headers: this._headers,
@@ -73,6 +73,20 @@ export default class Api {
         name: name,
         link: link,
       }),
+    })
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(new Error(`Ошибка: ${res.status}`));
+      })
+      .catch(err => Promise.reject(err));
+  }
+
+  deleteCard(id) {
+    return fetch((`${this._urlCards}/${id}`), {
+      method: 'DELETE',
+      headers: this._headers,
     })
     .then(res => {
       if (res.ok) {
@@ -87,7 +101,7 @@ export default class Api {
    * Установка нового аватара
    * @param {*} param0 link - ссылка на аватар
    */
-  setAvatar({avatar}) {
+  setAvatar({ avatar }) {
     return fetch(this._urlUserMeAvatar, {
       method: 'PATCH',
       headers: this._headers,
@@ -95,14 +109,14 @@ export default class Api {
         avatar: avatar,
       }),
     })
-    .then(res => {
-      console.log(res)
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(new Error(`Ошибка: ${res.status}`));
-    })
-    .catch(err => Promise.reject(err));
+      .then(res => {
+        //console.log(res)
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(new Error(`Ошибка: ${res.status}`));
+      })
+      .catch(err => Promise.reject(err));
   }
 
 

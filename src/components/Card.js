@@ -1,5 +1,7 @@
 export default class Card {
-  constructor(card, cardTemplate, { handleCardClick }, api) {
+  constructor(card, cardTemplate, { handleCardClick }, api, userId) {
+    this._userId = userId;
+    this._card = card;
     this._cardTemplate = cardTemplate;
     this._name = card.name;
     this._alt = card.name;
@@ -17,21 +19,21 @@ export default class Card {
 
   generateCard() {
     this._element = this._getTemplate();
-
+    this._trash = this._element.querySelector('.card__trash');
+    if (this._card.owner._id !== this._userId) {
+      this._trash.classList.add('card__trash_disabled');
+    }
     this._image = this._element.querySelector('.card__image');
     this._element.querySelector('.card__title').textContent = this._name;
     this._image.setAttribute('src', this._link);
     this._image.setAttribute('alt', this._name);
-    //console.log(this._likesCount);
-    //console.log(this._likes.length);
-    //this._likesCount.textContent = 0 || this._likes.length;
     this._setEventListeners();
     return this._element;
   }
 
-  setLikeCount(el, card) {
+  setLikeCount(el) {
     this._likesCount = el.querySelector('.card__like-count');
-    this._likesCount.textContent = 0 || this._likes.length;
+    this._likesCount.textContent = this._likes.length;
     return el;
   }
 
@@ -44,7 +46,11 @@ export default class Card {
   }
 
   _handleDeleteCard() {
-    this._element.closest('.card').remove();
+    this._api.deleteCard(this._id)
+      .then(() => {
+        this._element.remove();
+      })
+      .catch(err => console.log(err));
   }
 
   _setEventListeners() {

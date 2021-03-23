@@ -8,18 +8,28 @@ export default class UserInfo {
     this._api = api;
   }
 
-  getUserInfo() {
-    return {
-      name: this._name.textContent,
-      about: this._about.textContent,
-      avatar: this._avatar,
-    }
+  getUserInfoOnServer() {
+    return this._api.getUserInfo()
+    .then(user => {
+      //console.log(data);
+      this._user = user;
+      this.setUserInfo(user);
+      this.setUserAvatar(user);
+    })
+    .catch(err => {
+      console.log(err)
+    });
   }
 
-  setUserInfo({ name, about }) {
-    this._name.textContent = name;
-    this._about.textContent = about;
-    this._avatar.alt = `${name}.`;
+  getUserInfo() {
+    return this._user;
+  }
+
+  setUserInfo(user) {
+    this._name.textContent = user.name;
+    this._about.textContent = user.about;
+    this._avatar.alt = `${user.name}.`;
+    this._user = user;
   }
 
   /**

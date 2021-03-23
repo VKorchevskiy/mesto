@@ -2,23 +2,36 @@ export default class Section {
   constructor({ renderer }, containerSelector, api) {
     this._renderer = renderer;
     this._container = document.querySelector(containerSelector);
-    this._api = api
+    this._api = api;
   }
 
   /**
    * Отрисовывает массив карточек
    * @param {Array} cards
    */
- renderItems(cards) {
+  renderItems(cards) {
     cards.forEach(card => this._renderer(card));
+  }
+
+  renderCardsFromServer() {
+    this._api.getInitialCards()
+      .then(data => {
+        //console.log(data);
+        this.renderItems(data);
+      })
+      .catch(err => console.log(err));
   }
 
   /**
    * Отрисовывает одну карточку
    * @param {Card} element карточка
    */
-addItem(element) {
+  addItemPrepend(element) {
     this._container.prepend(element);
+  }
+
+  addItemAppend(element) {
+    this._container.append(element);
   }
 }
 

@@ -11,7 +11,11 @@ const formCard = popupTypeCard.querySelector('.form_type_card');
 const selectorUserAvatar = '.profile__avatar';
 const selectorPopupTypeAvatar = '.popup_type_user-avatar';
 const popupTypeAvatar = document.querySelector(selectorPopupTypeAvatar);
-const formAvatar = popupTypeAvatar.querySelector('.form')
+const formAvatar = popupTypeAvatar.querySelector('.form');
+const selectorPopupTypeDelete = '.popup_type_delete-card';
+const popupTypeDelete = document.querySelector(selectorPopupTypeDelete);
+const formDelete = popupTypeDelete.querySelector('.form');
+
 const formSelectors = {
   inputSelector: '.form__input-text',
   submitButtonSelector: '.form__save',
@@ -62,6 +66,9 @@ export {
   selectorPopupTypeAvatar,
   popupTypeAvatar,
   formAvatar,
+  selectorPopupTypeDelete,
+  popupTypeDelete,
+  formDelete,
   formSelectors,
   optionsApi,
   selectorCloseButton,
