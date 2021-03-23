@@ -5,6 +5,7 @@ export default class Card {
     this._alt = card.name;
     this._link = card.link;
     this._likes = card.likes;
+    this._id = card._id;
     this._handleCardClick = handleCardClick;
     this._api = api;
   }
@@ -16,16 +17,22 @@ export default class Card {
 
   generateCard() {
     this._element = this._getTemplate();
-    this._likesCount = this._element.querySelector('.card__like-count')
+
     this._image = this._element.querySelector('.card__image');
     this._element.querySelector('.card__title').textContent = this._name;
     this._image.setAttribute('src', this._link);
     this._image.setAttribute('alt', this._name);
     //console.log(this._likesCount);
     //console.log(this._likes.length);
-    this._likesCount.textContent = this._likes.length;
+    //this._likesCount.textContent = 0 || this._likes.length;
     this._setEventListeners();
     return this._element;
+  }
+
+  setLikeCount(el, card) {
+    this._likesCount = el.querySelector('.card__like-count');
+    this._likesCount.textContent = 0 || this._likes.length;
+    return el;
   }
 
   getCardInfo() {

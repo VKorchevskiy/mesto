@@ -59,7 +59,7 @@ const userInfo = new UserInfo(
 //1) Взятие данных пользователя
 api.getUserInfo()
   .then(data => {
-    console.log(data);
+    //console.log(data);
     userInfo.setUserInfo(data);
     userInfo.setUserAvatar(data);
   })
@@ -71,8 +71,8 @@ api.getUserInfo()
 const cardsList = new Section({
   renderer: (initialCard) => {
     const card = createCard(initialCard, cardTemplate);
-    //console.log(initialCard);
-    cardsList.addItem(card.generateCard());
+    //cardsList.addItem(card.generateCard());
+    cardsList.addItem(card.setLikeCount(card.generateCard(), initialCard));
   },
 }, cardContainerSelector, api);
 
@@ -131,7 +131,11 @@ const popupWithImage = new PopupWithImage(selectorPopupTypeImage);
 popupWithImage.setEventListeners();
 
 
-
+/**
+ * Создаёт карточку, готовую для вставки в DOM
+ * @param {*} card - карточка
+ * @param {*} cardTemplate - шаблон карточки
+ */
 function createCard(card, cardTemplate) {
   return new Card(
     card,
