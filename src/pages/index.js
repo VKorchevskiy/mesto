@@ -67,7 +67,7 @@ userInfo.getUserInfoOnServer();
 const cardsList = new Section({
   renderer: (initialCard) => {
     const card = createCard(initialCard, cardTemplate);
-    cardsList.addItemPrepend(card.setLikeCount(card.generateCard()));
+    cardsList.addItemPrepend(card.renderMyLike(card.setLikeCount(card.generateCard())));
   },
 }, cardContainerSelector, api);
 
@@ -125,9 +125,8 @@ const popupDelete = new PopupWithForm(selectorPopupTypeDelete, {
     const card = popupDelete.data;
 
     api.deleteCard(card._id)
-      .then((res) => {
+      .then(() => {
         card.removeCard();
-        console.log(card)
       })
       .catch(err => console.log(err))
       .finally(() => {
@@ -155,19 +154,40 @@ function createCard(card, cardTemplate) {
     {
       handleCardClick: () => {
         popupWithImage.open(card);
-        //console.log(card)
       }
     },
     {
-      openPopupRemove: (card) => {
-        console.log(card)
+      handelDeleteIcon: (card) => {
         popupDelete.open(card)
       }
     },
+    {
+      handleLikeIcon: (card) => {
+        if(!card.isLiked()) {
+
+          api.putLike(card.getId())
+          .then((res) => {
+            console.log(res)
+            card.renderToogleLikeCard();
+            card.incrementLikeCount();
+          })
+        } else {
+
+          api.deleteLike(card.getId())
+          .then(res => {
+            console.log(res)
+            card.renderToogleLikeCard();
+            card.decrementLikeCount();
+          })
+        }
+      }
+    },
     api,
-    userInfo._user._id,
+    userInfo.getUserId(),
   );
 }
+
+
 
 //9) Сменить аватар
 const popupWithFormAvatar = new PopupWithForm(selectorPopupTypeAvatar, {

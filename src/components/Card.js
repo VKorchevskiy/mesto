@@ -1,5 +1,5 @@
 export default class Card {
-  constructor(card, cardTemplate, { handleCardClick }, { openPopupRemove }, api, userId) {
+  constructor(card, cardTemplate, { handleCardClick }, { handelDeleteIcon }, { handleLikeIcon }, api, userId) {
     this._userId = userId;
     this._card = card;
     this._cardTemplate = cardTemplate;
@@ -9,7 +9,8 @@ export default class Card {
     this._likes = card.likes;
     this._id = card._id;
     this._handleCardClick = handleCardClick;
-    this._openPopupRemove = openPopupRemove;
+    this._handelDeleteIcon = handelDeleteIcon;
+    this._handleLikeIcon = handleLikeIcon;
     this._api = api;
   }
 
@@ -38,12 +39,35 @@ export default class Card {
     return el;
   }
 
+  incrementLikeCount() {
+    this._likesCount.textContent = +this._likesCount.textContent + 1;
+  }
+
+  decrementLikeCount() {
+    this._likesCount.textContent = +this._likesCount.textContent - 1;
+  }
+
+  renderMyLike(el) {
+    if(this.isLiked()) {
+      this.renderToogleLikeCard();
+    }
+    return el
+  }
+
   getCardInfo() {
-    return { name: this._name, link: this._link , id: this._id};
+    return { name: this._name, link: this._link, id: this._id };
   }
 
   getId() {
     return this._id;
+  }
+
+  isLiked() {
+    return this._likes.some(like => like._id == this._userId);
+  }
+
+  renderToogleLikeCard() {
+    this._like.classList.toggle('card__like_active');
   }
 
   _handleLikeCard() {
@@ -54,18 +78,19 @@ export default class Card {
     this._element.remove();
   }
 
-  _handleDeleteCard() {
-    this._api.deleteCard(this._id)
-      .then(() => {
-        this._element.remove();
-      })
-      .catch(err => console.log(err));
-  }
+  /*   _handleDeleteCard() {
+      this._api.deleteCard(this._id)
+        .then(() => {
+          this._element.remove();
+        })
+        .catch(err => console.log(err));
+    } */
 
   _setEventListeners() {
     this._like = this._element.querySelector('.card__like');
-    this._like.addEventListener('click', () => this._handleLikeCard());
-    this._element.querySelector('.card__trash').addEventListener('click', () => this._openPopupRemove(this));
+    this._like.addEventListener('click', () => this._handleLikeIcon(this));
+    //this._like.addEventListener('click', () => this._handleLikeCard());
+    this._element.querySelector('.card__trash').addEventListener('click', () => this._handelDeleteIcon(this));
     //this._element.querySelector('.card__trash').addEventListener('click', () => this._handleDeleteCard());
     this._image.addEventListener('click', this._handleCardClick);
   }

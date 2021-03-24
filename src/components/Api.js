@@ -2,6 +2,7 @@ export default class Api {
   constructor(config) {
     this._urlUserMe = config.urlUserMe;
     this._urlCards = config.urlCards;
+    this._urlCardsLikes = config.urlCardsLikes;
     this._urlUserMeAvatar = config.urlUserMeAvatar;
     this._headers = config.headers;
   }
@@ -96,6 +97,36 @@ export default class Api {
     })
     .catch(err => Promise.reject(err));
   }
+
+  putLike(id) {
+    return fetch((`${this._urlCardsLikes}/${id}`), {
+      method: 'PUT',
+      headers: this._headers,
+    })
+    .then(res => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(new Error(`Ошибка: ${res.status}`));
+    })
+    .catch(err => Promise.reject(err));
+  }
+
+  deleteLike(id) {
+    return fetch((`${this._urlCardsLikes}/${id}`), {
+      method: 'DELETE',
+      headers: this._headers,
+    })
+    .then(res => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(new Error(`Ошибка: ${res.status}`));
+    })
+    .catch(err => Promise.reject(err));
+  }
+
+
 
   /**
    * Установка нового аватара

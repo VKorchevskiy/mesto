@@ -34,24 +34,3 @@ export default class Section {
     this._container.append(element);
   }
 }
-
-
-
-/*
-export default class Section {
-  constructor({ cards, renderer }, containerSelector, api) {
-    this._cards = cards;
-    this._renderer = renderer;
-    this._container = document.querySelector(containerSelector);
-    this._api = api;
-  }
-
-  renderItems() {
-    this._cards.forEach(card => this._renderer(card));
-  }
-
-  addItem(element) {
-    this._container.prepend(element);
-  }
-}
-*/

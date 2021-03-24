@@ -29,6 +29,7 @@ const baseUrl = 'https://mesto.nomoreparties.co/v1/';
 const optionsApi = {
   urlUserMe: `${baseUrl}${cohortId}/users/me`,
   urlCards: `${baseUrl}${cohortId}/cards`,
+  urlCardsLikes: `${baseUrl}${cohortId}/cards/likes`,
   urlUserMeAvatar: `${baseUrl}${cohortId}/users/me/avatar`,
   headers: {
     'Content-Type': 'application/json',
