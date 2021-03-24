@@ -40,7 +40,7 @@ import {
 const formProfileValidator = new FormValidator(formSelectors, formProfile);
 const formCardValidator = new FormValidator(formSelectors, formCard);
 const formAvatarValidator = new FormValidator(formSelectors, formAvatar);
-const formDeleteValidator = new FormValidator(formSelectors, formAvatar);
+const formDeleteValidator = new FormValidator(formSelectors, formDelete);
 
 //Включение валидации форм
 formProfileValidator.enableValidation();
@@ -122,9 +122,21 @@ function handleInitCardPopup() {
 //7) Удаление карточки
 const popupDelete = new PopupWithForm(selectorPopupTypeDelete, {
   submitForm: () => {
+    const card = popupDelete.data;
 
+    api.deleteCard(card._id)
+      .then((res) => {
+        card.removeCard();
+        console.log(card)
+      })
+      .catch(err => console.log(err))
+      .finally(() => {
+        popupDelete.close();
+      });
   }
-})
+});
+
+popupDelete.setEventListeners();
 
 //Работа с попапом картинки
 const popupWithImage = new PopupWithImage(selectorPopupTypeImage);
@@ -143,6 +155,13 @@ function createCard(card, cardTemplate) {
     {
       handleCardClick: () => {
         popupWithImage.open(card);
+        //console.log(card)
+      }
+    },
+    {
+      openPopupRemove: (card) => {
+        console.log(card)
+        popupDelete.open(card)
       }
     },
     api,

@@ -1,5 +1,5 @@
 export default class Card {
-  constructor(card, cardTemplate, { handleCardClick }, api, userId) {
+  constructor(card, cardTemplate, { handleCardClick }, { openPopupRemove }, api, userId) {
     this._userId = userId;
     this._card = card;
     this._cardTemplate = cardTemplate;
@@ -9,6 +9,7 @@ export default class Card {
     this._likes = card.likes;
     this._id = card._id;
     this._handleCardClick = handleCardClick;
+    this._openPopupRemove = openPopupRemove;
     this._api = api;
   }
 
@@ -38,11 +39,19 @@ export default class Card {
   }
 
   getCardInfo() {
-    return { name: this._name, link: this._link };
+    return { name: this._name, link: this._link , id: this._id};
+  }
+
+  getId() {
+    return this._id;
   }
 
   _handleLikeCard() {
     this._like.classList.toggle('card__like_active');
+  }
+
+  removeCard() {
+    this._element.remove();
   }
 
   _handleDeleteCard() {
@@ -56,7 +65,8 @@ export default class Card {
   _setEventListeners() {
     this._like = this._element.querySelector('.card__like');
     this._like.addEventListener('click', () => this._handleLikeCard());
-    this._element.querySelector('.card__trash').addEventListener('click', () => this._handleDeleteCard());
+    this._element.querySelector('.card__trash').addEventListener('click', () => this._openPopupRemove(this));
+    //this._element.querySelector('.card__trash').addEventListener('click', () => this._handleDeleteCard());
     this._image.addEventListener('click', this._handleCardClick);
   }
 }
