@@ -76,11 +76,8 @@ cardsList.renderCardsFromServer();
 //3) Редактирование информации профиля
 const popupWithFormProfile = new PopupWithForm(selectorPopupTypeProfile, {
   submitForm: ({ 'name-profile': name, 'job-profile': about }) => {
+    popupWithFormProfile.setLoadTextButton();
     api.setUserInfo({ name, about })
-      .then(({ name, about }) => {
-        popupWithFormProfile.setLoadTextButton();
-        return { name, about };
-      })
       .then(({ name, about }) => {
         userInfo.setUserInfo({ name, about });
       })
@@ -105,11 +102,8 @@ function handleInitProfilePopup() {
 //4) Добавление новой карточки
 const popupWithFormCard = new PopupWithForm(selectorPopupTypeCard, {
   submitForm: ({ 'card-name': name, 'card-link': link }) => {
+    popupWithFormCard.setLoadTextButton();
     api.setCard({ name, link })
-      .then((data) => {
-        popupWithFormCard.setLoadTextButton();
-        return data;
-      })
       .then((data) => {
         const card = createCard(data, cardTemplate);
         cardsList.addItemAppend(card.setLikeCount(card.generateCard()));
@@ -133,11 +127,8 @@ function handleInitCardPopup() {
 const popupDelete = new PopupWithForm(selectorPopupTypeDelete, {
   submitForm: () => {
     const card = popupDelete.data;
-
+    popupDelete.setLoadTextButton();
     api.deleteCard(card._id)
-      .then(() => {
-        popupDelete.setLoadTextButton();
-      })
       .then(() => {
         card.removeCard();
       })
@@ -204,11 +195,8 @@ function createCard(card, cardTemplate) {
 //9) Сменить аватар
 const popupWithFormAvatar = new PopupWithForm(selectorPopupTypeAvatar, {
   submitForm: ({ 'user-avatar': avatar }) => {
+    popupWithFormAvatar.setLoadTextButton();
     api.setAvatar({ avatar })
-      .then(({ avatar }) => {
-        popupWithFormAvatar.setLoadTextButton();
-        return { avatar };
-      })
       .then(({ avatar }) => {
         userInfo.setUserAvatar({ avatar });
         popupWithFormAvatar.close();
