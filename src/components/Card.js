@@ -40,11 +40,11 @@ export default class Card {
   }
 
   incrementLikeCount() {
-    this._likesCount.textContent = +this._likesCount.textContent + 1;
+    this._likesCount.textContent = (0 || +this._likesCount.textContent) + 1;
   }
 
   decrementLikeCount() {
-    this._likesCount.textContent = +this._likesCount.textContent - 1;
+    this._likesCount.textContent = (0 || +this._likesCount.textContent) - 1;
   }
 
   renderMyLike(el) {
@@ -63,28 +63,34 @@ export default class Card {
   }
 
   isLiked() {
-    return this._likes.some(like => like._id == this._userId);
+    this._isLiked = this._likes.some(like => like._id == this._userId);
+    return this._isLiked;
+  }
+
+  toggleIsLiked() {
+    this._isLiked = !this._isLiked;
+    return this._isLiked;
   }
 
   renderToogleLikeCard() {
     this._like.classList.toggle('card__like_active');
   }
 
-  _handleLikeCard() {
+/*   _handleLikeCard() {
     this._like.classList.toggle('card__like_active');
-  }
+  } */
 
   removeCard() {
     this._element.remove();
   }
 
-  /*   _handleDeleteCard() {
-      this._api.deleteCard(this._id)
-        .then(() => {
-          this._element.remove();
-        })
-        .catch(err => console.log(err));
-    } */
+/*   _handleDeleteCard() {
+    this._api.deleteCard(this._id)
+      .then(() => {
+        this._element.remove();
+      })
+      .catch(err => console.log(err));
+  } */
 
   _setEventListeners() {
     this._like = this._element.querySelector('.card__like');

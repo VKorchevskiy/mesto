@@ -103,7 +103,7 @@ const popupWithFormCard = new PopupWithForm(selectorPopupTypeCard, {
     api.setCard({ name, link })
       .then((data) => {
         const card = createCard(data, cardTemplate);
-        cardsList.addItemAppend(card.generateCard());
+        cardsList.addItemAppend(card.setLikeCount(card.generateCard()));
       })
       .catch(err => console.log(err))
       .finally(() => {
@@ -163,22 +163,20 @@ function createCard(card, cardTemplate) {
     },
     {
       handleLikeIcon: (card) => {
-        if(!card.isLiked()) {
-
+        if(card.toggleIsLiked()) {
           api.putLike(card.getId())
-          .then((res) => {
-            console.log(res)
+          .then(() => {
             card.renderToogleLikeCard();
             card.incrementLikeCount();
           })
+          .catch(err => console.log(err));
         } else {
-
           api.deleteLike(card.getId())
-          .then(res => {
-            console.log(res)
+          .then(() => {
             card.renderToogleLikeCard();
             card.decrementLikeCount();
           })
+          .catch(err => console.log(err))
         }
       }
     },
