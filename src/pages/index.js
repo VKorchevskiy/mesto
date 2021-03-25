@@ -78,11 +78,16 @@ const popupWithFormProfile = new PopupWithForm(selectorPopupTypeProfile, {
   submitForm: ({ 'name-profile': name, 'job-profile': about }) => {
     api.setUserInfo({ name, about })
       .then(({ name, about }) => {
+        popupWithFormProfile.setLoadTextButton();
+        return { name, about };
+      })
+      .then(({ name, about }) => {
         userInfo.setUserInfo({ name, about });
       })
       .catch(err => console.log(err))
       .finally(() => {
         popupWithFormProfile.close();
+        popupWithFormProfile.removeLoadTextButton();
       });
   },
 });
@@ -102,11 +107,16 @@ const popupWithFormCard = new PopupWithForm(selectorPopupTypeCard, {
   submitForm: ({ 'card-name': name, 'card-link': link }) => {
     api.setCard({ name, link })
       .then((data) => {
+        popupWithFormCard.setLoadTextButton();
+        return data;
+      })
+      .then((data) => {
         const card = createCard(data, cardTemplate);
         cardsList.addItemAppend(card.setLikeCount(card.generateCard()));
       })
       .catch(err => console.log(err))
       .finally(() => {
+        popupWithFormCard.removeLoadTextButton();
         popupWithFormCard.close();
       });
   },
@@ -126,10 +136,14 @@ const popupDelete = new PopupWithForm(selectorPopupTypeDelete, {
 
     api.deleteCard(card._id)
       .then(() => {
+        popupDelete.setLoadTextButton();
+      })
+      .then(() => {
         card.removeCard();
       })
       .catch(err => console.log(err))
       .finally(() => {
+        popupDelete.removeLoadTextButton();
         popupDelete.close();
       });
   }
@@ -192,10 +206,18 @@ const popupWithFormAvatar = new PopupWithForm(selectorPopupTypeAvatar, {
   submitForm: ({ 'user-avatar': avatar }) => {
     api.setAvatar({ avatar })
       .then(({ avatar }) => {
+        popupWithFormAvatar.setLoadTextButton();
+        return { avatar };
+      })
+      .then(({ avatar }) => {
         userInfo.setUserAvatar({ avatar });
         popupWithFormAvatar.close();
       })
-      .catch(err => console.log(err));
+      .catch(err => console.log(err))
+      .finally(() => {
+        popupWithFormAvatar.removeLoadTextButton();
+        popupWithFormAvatar.close();
+      });
   },
 });
 
