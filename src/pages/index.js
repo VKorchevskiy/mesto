@@ -57,11 +57,16 @@ const userInfo = new UserInfo(
     selectorProfileName: selectorProfileName,
     selectorProfileDescription: selectorProfileDescription,
     selectorUserAvatar: selectorUserAvatar,
-  },
-  api
+  }
 );
 
-userInfo.getUserInfoOnServer();
+api.getUserInfo()
+  .then(user => {
+    userInfo.setUserInfo(user);
+    userInfo.setUserAvatar(user);
+    console.log(userInfo._user)
+  })
+  .catch(err => console.log(err));
 
 //2+5) отрисовка карточек с сервера с лайками
 const cardsList = new Section({

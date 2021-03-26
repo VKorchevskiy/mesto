@@ -1,34 +1,32 @@
 export default class UserInfo {
-  constructor({ selectorProfileName, selectorProfileDescription, selectorUserAvatar }, api) {
+  constructor({ selectorProfileName, selectorProfileDescription, selectorUserAvatar }) {
     this._selectorProfileName = selectorProfileName;
     this._selectorProfileDescription = selectorProfileDescription;
     this._name = document.querySelector(selectorProfileName);
     this._about = document.querySelector(selectorProfileDescription);
     this._avatar = document.querySelector(selectorUserAvatar);
-    this._api = api;
   }
 
-  getUserInfoOnServer() {
-    return this._api.getUserInfo()
-    .then(user => {
-      //console.log(data);
-      this._user = user;
-      this.setUserInfo(user);
-      this.setUserAvatar(user);
-    })
-    .catch(err => {
-      console.log(err)
-    });
-  }
-
+  /**
+   * Возвращает объект данных пользователя
+   * @returns объект данных пользователя
+   */
   getUserInfo() {
     return this._user;
   }
 
+  /**
+   * Возвращает id пользователя
+   * @returns id пользователя
+   */
   getUserId() {
     return this._user._id;
   }
 
+  /**
+   * Устанавливает значения параметрам пользователя
+   * @param {*} user - объект данных пользователя
+   */
   setUserInfo(user) {
     this._name.textContent = user.name;
     this._about.textContent = user.about;
