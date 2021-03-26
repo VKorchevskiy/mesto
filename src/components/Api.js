@@ -8,41 +8,42 @@ export default class Api {
   }
 
   /**
-   * Взятие данных пользователя с сервера
-   * @returns {*} Данные пользователя
+   * Проверяет ответ сервера и возвращает результат
+   * @param {*} res - ответ сервера
+   * @returns объект данных или ошибку
+   */
+  _checkServerResponse(res) {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(new Error(`Ошибка: ${res.status}`));
+  }
+
+  /**
+   * Берёт данные пользователя с сервера
+   * @returns {*} Данные пользователя или ошибку
    */
   getUserInfo() {
     return fetch(this._urlUserMe, {
       headers: this._headers,
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(new Error(`Ошибка: ${res.status}`));
-      })
-      .catch(err => Promise.reject(err));
+      .then(res => this._checkServerResponse(res));
   }
 
   /**
-   * Взятие массива карточек с сервера, для первичной инициализации страницы
-   * @returns {Array} массив карточек
+   * Берёт массива карточек с сервера, для первичной инициализации страницы
+   * @returns {Array} массив карточек или ошибку
    */
   getInitialCards() {
     return fetch(this._urlCards, {
       headers: this._headers,
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(new Error(`Ошибка: ${res.status}`));
-      })
+      .then(res => this._checkServerResponse(res));
   }
 
   /**
-   * Обновление информации пользователя
-   * @param {*} param0 name - имя пользователя, about - описание пользователя.
+   * Обновляет информацию пользователя
+   * @param {name, about} param0 name - имя пользователя, about - описание пользователя.
    */
   setUserInfo({ name, about }) {
     return fetch(this._urlUserMe, {
@@ -53,18 +54,13 @@ export default class Api {
         about: about,
       }),
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(new Error(`Ошибка: ${res.status}`));
-      })
-      .catch(err => Promise.reject(err));
+      .then(res => this._checkServerResponse(res));
   }
 
   /**
-   * Добавление карточки
-   * @param {*} param0 name - название карточки, link - ссылка на картинку.
+   * Добавляет карточку
+   * @param {name, link} name - название карточки, link - ссылка на картинку.
+   * @returns карточку или ошибку
    */
   setCard({ name, link }) {
     return fetch(this._urlCards, {
@@ -75,62 +71,52 @@ export default class Api {
         link: link,
       }),
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(new Error(`Ошибка: ${res.status}`));
-      })
-      .catch(err => Promise.reject(err));
+      .then(res => this._checkServerResponse(res));
   }
 
+  /**
+   * Удаляет карточку
+   * @param {*} id - id карточки
+   * @returns карточку или ошибку
+   */
   deleteCard(id) {
     return fetch((`${this._urlCards}/${id}`), {
       method: 'DELETE',
       headers: this._headers,
     })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(new Error(`Ошибка: ${res.status}`));
-    })
-    .catch(err => Promise.reject(err));
+      .then(res => this._checkServerResponse(res));
   }
 
+  /**
+   * Установка лайка
+   * @param {*} id - id карточки
+   * @returns лайки или ошибку
+   */
   putLike(id) {
     return fetch((`${this._urlCardsLikes}/${id}`), {
       method: 'PUT',
       headers: this._headers,
     })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(new Error(`Ошибка: ${res.status}`));
-    })
-    .catch(err => Promise.reject(err));
+      .then(res => this._checkServerResponse(res));
   }
 
+  /**
+   * Удаление лайка
+   * @param {*} id - id номер карточки
+   * @returns карточку или ошибку
+   */
   deleteLike(id) {
     return fetch((`${this._urlCardsLikes}/${id}`), {
       method: 'DELETE',
       headers: this._headers,
     })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(new Error(`Ошибка: ${res.status}`));
-    })
-    .catch(err => Promise.reject(err));
+      .then(res => this._checkServerResponse(res));
   }
-
-
 
   /**
    * Установка нового аватара
-   * @param {*} param0 link - ссылка на аватар
+   * @param {avatar} avatar- аватар
+   * @returns аватар или ошибку
    */
   setAvatar({ avatar }) {
     return fetch(this._urlUserMeAvatar, {
@@ -140,28 +126,6 @@ export default class Api {
         avatar: avatar,
       }),
     })
-      .then(res => {
-        //console.log(res)
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(new Error(`Ошибка: ${res.status}`));
-      })
-      .catch(err => Promise.reject(err));
+      .then(res => this._checkServerResponse(res));
   }
-
-
-
 }
-
-
-/* fetch('https://mesto.nomoreparties.co/v1/cohort-21/cards', {
-  headers: {
-    'Content-Type': 'application/json',
-    authorization: '69f5d24a-9d82-4482-8712-0c3c63467f5c'
-  }
-})
-  .then(res => res.json())
-  .then((result) => {
-    console.log(result);
-  }); */
