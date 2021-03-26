@@ -197,8 +197,6 @@ function createCard(card, cardTemplate) {
   );
 }
 
-
-
 //9) Сменить аватар
 const popupWithFormAvatar = new PopupWithForm(selectorPopupTypeAvatar, {
   submitForm: ({ 'user-avatar': avatar }) => {

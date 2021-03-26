@@ -75,21 +75,9 @@ export default class Card {
     this._like.classList.toggle('card__like_active');
   }
 
-/*   _handleLikeCard() {
-    this._like.classList.toggle('card__like_active');
-  } */
-
   removeCard() {
     this._element.remove();
   }
-
-/*   _handleDeleteCard() {
-    this._api.deleteCard(this._id)
-      .then(() => {
-        this._element.remove();
-      })
-      .catch(err => console.log(err));
-  } */
 
   _setEventListeners() {
     this._like = this._element.querySelector('.card__like');

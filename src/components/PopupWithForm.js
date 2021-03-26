@@ -18,25 +18,20 @@ export default class PopupWithForm extends Popup {
 
   setLoadTextButton() {
     this._buttonSave.setAttribute('value', `${this._buttonSave.getAttribute('value')}...`);
-    //console.log(`${this._buttonSave.getAttribute('value')}...`)
   }
 
   removeLoadTextButton() {
-    this._buttonSave.setAttribute('value',  this._buttonSave.getAttribute('value').replace('...',''));
-    //console.log(this._buttonSave.getAttribute('value').replace('...',''))
-    //this._buttonSave.textContent = this._buttonSave.textContent.replace('...','');
+    this._buttonSave.setAttribute('value', this._buttonSave.getAttribute('value').replace('...', ''));
   }
 
   _getInputValues() {
     this._formValues = {};
     this._inputList.forEach(input => this._formValues[input.name] = input.value);
-    //console.log(this._formValues)
     return this._formValues;
   }
 
   setEventListeners() {
     super.setEventListeners();
-
     this._form.addEventListener('submit', this._submitFunction);
   }
 
