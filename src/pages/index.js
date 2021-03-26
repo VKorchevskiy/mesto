@@ -185,7 +185,6 @@ function createCard(card, cardTemplate) {
         }
       }
     },
-    api,
     userInfo.getUserId(),
   );
 }

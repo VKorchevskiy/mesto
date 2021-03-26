@@ -1,5 +1,5 @@
 export default class Card {
-  constructor(card, cardTemplate, { handleCardClick }, { handelDeleteIcon }, { handleLikeIcon }, api, userId) {
+  constructor(card, cardTemplate, { handleCardClick }, { handelDeleteIcon }, { handleLikeIcon }, userId) {
     this._userId = userId;
     this._card = card;
     this._cardTemplate = cardTemplate;
@@ -11,7 +11,6 @@ export default class Card {
     this._handleCardClick = handleCardClick;
     this._handelDeleteIcon = handelDeleteIcon;
     this._handleLikeIcon = handleLikeIcon;
-    this._api = api;
   }
 
   _getTemplate() {
