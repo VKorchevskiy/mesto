@@ -1,8 +1,7 @@
 export default class Section {
-  constructor({ renderer }, containerSelector, api) {
+  constructor({ renderer }, containerSelector) {
     this._renderer = renderer;
     this._container = document.querySelector(containerSelector);
-    this._api = api;
   }
 
   /**
@@ -13,23 +12,18 @@ export default class Section {
     cards.forEach(card => this._renderer(card));
   }
 
-  renderCardsFromServer() {
-    this._api.getInitialCards()
-      .then(data => {
-        //console.log(data);
-        this.renderItems(data);
-      })
-      .catch(err => console.log(err));
-  }
-
   /**
-   * Отрисовывает одну карточку
+   * Отрисовывает одну карточку в начале секции
    * @param {Card} element карточка
    */
   addItemPrepend(element) {
     this._container.prepend(element);
   }
 
+  /**
+   * Отрисовывает одну карточку в конце секции
+   * @param {*} element
+   */
   addItemAppend(element) {
     this._container.append(element);
   }

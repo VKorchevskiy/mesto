@@ -69,9 +69,13 @@ const cardsList = new Section({
     const card = createCard(initialCard, cardTemplate);
     cardsList.addItemPrepend(card.renderMyLike(card.setLikeCount(card.generateCard())));
   },
-}, cardContainerSelector, api);
+}, cardContainerSelector);
 
-cardsList.renderCardsFromServer();
+api.getInitialCards()
+    .then(data => {
+      cardsList.renderItems(data);
+    })
+    .catch(err => console.log(err));
 
 //3) Редактирование информации профиля
 const popupWithFormProfile = new PopupWithForm(selectorPopupTypeProfile, {
