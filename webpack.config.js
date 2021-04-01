@@ -46,7 +46,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html', // путь к файлу index.html
       scriptLoading: 'blocking', // отмена defer
-
+      minify: true,
     }),
     new CleanWebpackPlugin(), // использовали плагин
     new MiniCssExtractPlugin(), // подключили плагин для объединения css файлов
