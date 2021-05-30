@@ -2,17 +2,17 @@
     <img src="https://raw.githubusercontent.com/VKorchevskiy/mesto/060581894408910da35db99e225e749985aadd2c/src/images/logo.svg" width="300px">
 </p>
 <p align="center">
-    <img alt="Made by: VKorchevskiy" src="https://img.shields.io/badge/Made%20by-VKorchevskiy-green" />
-    <img alt="Stars *" src="https://img.shields.io/github/stars/VKorchevskiy/mesto" />
-    <img alt="Code Size" src="https://img.shields.io/github/languages/code-size/VKorchevskiy/mesto">
+    <img alt="Made by: VKorchevskiy" src="https://img.shields.io/badge/Made%20by-VKorchevskiy-informational?style=for-the-badge&logo=appveyor" />
+    <img alt="Stars *" src="https://img.shields.io/github/stars/VKorchevskiy/mesto?style=for-the-badge&logo=appveyor&color=informational" />
+    <img alt="Code Size" src="https://img.shields.io/github/languages/code-size/VKorchevskiy/mesto?style=for-the-badge&logo=appveyor&color=informational">
 
 
 ## Обзор
 
 * Figma
-* Страница в нитернете
+* Страница в интернете
 * Картинки
-* Необходимо для начала работы
+* Необходимо для работы
 * Установка
 * Работа
 
