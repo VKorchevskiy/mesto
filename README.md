@@ -5,7 +5,7 @@
     <img alt="Made by: VKorchevskiy" src="https://img.shields.io/badge/Made%20by-VKorchevskiy-informational?style=for-the-badge&logo=appveyor" />
     <img alt="Stars *" src="https://img.shields.io/github/stars/VKorchevskiy/mesto?style=for-the-badge&logo=appveyor&color=informational" />
     <img alt="Code Size" src="https://img.shields.io/github/languages/code-size/VKorchevskiy/mesto?style=for-the-badge&logo=appveyor&color=informational">
-
+</p>
 
 ## Обзор
 
