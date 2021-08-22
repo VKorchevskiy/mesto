@@ -9,31 +9,31 @@
 
 ## Обзор
 
-* Figma
-* Страница в интернете
-* Картинки
-* Необходимо для работы
-* Установка
-* Работа
+* <a href="#figma">Figma</a>
+* <a href="#page">Страница в интернете</a>
+* <a href="#img">Картинки</a>
+* <a href="#need">Необходимо для работы</a>
+* <a href="#install">Установка</a>
+* <a href="#work">Работа</a>
 
-**Figma**
+<h3 id="figma">Figma</h3>
 
-  * [Ссылка на макет в Figma](https://www.figma.com/file/StZjf8HnoeLdiXS7dYrLAh/JavaScript.-Sprint-4)
+  * [Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4)
 
-**Страница в интернете**
+<h3 id="page">Страница в интернете</h3>
 
   * [Ссылка на страницу на Github pages.](https://vkorchevskiy.github.io/mesto/index.html)
 
-**Картинки**
+<h3 id="img">Картинки</h3>
 
   Картинки взяты из макета и оптимизированы с помощью [сервиса](https://tinypng.com/), чтобы сайт загружался быстрее.
 
-**Необходимо для работы:**
+<h3 id="need">Необходимо для работы</h3>
 
   * NodeJS & npm;
   * Git.
 
-**Установка**
+<h3 id="install">Установка</h3>
 
 * Склонировать проект на ПК:
 
@@ -43,7 +43,7 @@
 
       npm install
 
-**Работа**
+<h3 id="work">Работа</h3>
 
 * Запуск демо
 
